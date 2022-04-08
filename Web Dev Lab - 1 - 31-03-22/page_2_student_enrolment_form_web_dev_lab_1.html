@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll as a student</title>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption><h2>Details of students enrolled ...</h2></caption>
+        <tr>
+            <th colspan="3">STUDENTS</th>
+        </tr>
+
+        <tr>
+            <th>Student Name</th>
+            <th>USN</th>
+            <th>Class</th>
+        </tr>
+
+        <tr>
+            <td>James</td>
+            <td>IS190</td>
+            <td>6B</td>
+        </tr>
+        
+        <tr>
+            <td>Raghu</td>
+            <td>IS122</td>
+            <td>6B</td>
+        </tr>
+
+        <tr>
+            <td>Daniel</td>
+            <td>IS130</td>
+            <td rowspan="2" >7B</td>
+        </tr>
+    </table>
+    
+    <br>
+
+    <h2>Please provide your details ...</h2>
+
+    <form>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname">
+    </form>
+
+    <p>Choose your current year of study</p>
+    <form>
+        <input type="radio" id="first_year" name="first_year" value="first_year">
+        <label for="first_year">First Year</label><br>
+        <input type="radio" id="second_year" name="second_year" value="second_year">
+        <label for="second_year">Second Year</label><br>
+        <input type="radio" id="third_year" name="third_year" value="third_year">
+        <label for="third_year">Third Year</label><br>
+        <input type="radio" id="fourth_year" name="fourth_year" value="fourth_year">
+        <label for="fourth_year">Fourth Year</label><br>
+      </form>
+
+      <p>Select if even semester or odd semester</p>
+      <form>
+        <input type="checkbox" id="even_semester" name="even_semester" value="even_semester">
+        <label for="even_semester"> Even Semester</label><br>
+        <input type="checkbox" id="odd_semester" name="odd_semester" value="odd_semester">
+        <label for="odd_semester"> Odd Semester</label><br>
+      </form>
+
+      <br>
+
+      <p>Lets us know about yourself</p>
+      <textarea id="about_self" name="about_self" rows="4" cols="100">Introduce yourself here ...
+    </textarea>
+
+</body>
+</html>
