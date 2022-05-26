@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Num Sum</title>
+    <!-- <script src="./num_sum.js"></script> -->
+  </head>
+  <body>
+    <h2>Simple calculator</h2>
+
+    <form onsubmit="return false">
+      <label for="input_a">Enter a : </label>
+      <input type="text" name="input_a" id="input_a" />
+
+      <br />
+
+      <label for="operator">Enter operator : </label>
+      <input type="text" name="operator" id="operator" />
+
+      <br />
+
+      <label for="input_b">Enter b : </label>
+      <input type="text" name="input_b" id="input_b" />
+
+      <br />
+
+      <button onclick="performCalculation();">SUBMIT</button>
+
+      <p id="output">RESULT : ...</p>
+
+      <br />
+
+      <a href="./index_web_dev_lab_3_26_05_22.html"> Back </a>
+    </form>
+
+    <script>
+      //   taking the text from the input field
+
+      function performCalculation() {
+        let a = document.getElementById("input_a").value;
+        let b = document.getElementById("input_b").value;
+        let opr = document.getElementById("operator").value;
+
+        // performing the required operation using if elese statment
+        var result = 0;
+        a = parseInt(a);
+        b = parseInt(b);
+
+        if (opr == "+") {
+          result = a + b;
+        } else if (opr == "-") {
+          result = a - b;
+        } else if (opr == "*") {
+          result = a * b;
+        } else if (opr == "/") {
+          result = a / b;
+        }
+
+        // display the result using inner HTML
+        document.getElementById("output").innerHTML = " RESULT = " + result;
+      }
+    </script>
+  </body>
+</html>

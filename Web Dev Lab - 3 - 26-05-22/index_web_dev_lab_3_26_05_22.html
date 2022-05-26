@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Num Sum</title>
+    <!-- <script src="./num_sum.js"></script> -->
+  </head>
+  <body>
+    <form onsubmit="return false">
+      <label for="input_a">Enter a : </label>
+      <input type="text" name="input_a" id="input_a" />
+
+      <br />
+
+      <label for="input_b">Enter b : </label>
+      <input type="text" name="input_b" id="input_b" />
+
+      <br />
+
+      <button onclick="numSum();">SUBMIT</button>
+
+      <p id="output">SUM : ...</p>
+
+      <br />
+
+      <a href="./simple_calculator.html"> Q3. Simple Calculator</a>
+
+      <br />
+
+      <a href="./num_and_squares.html"> Q4. Print number and squares</a>
+    </form>
+
+    <script>
+      //   taking the text from the input field
+
+      function numSum() {
+        let a = document.getElementById("input_a").value;
+        let b = document.getElementById("input_b").value;
+
+        // findin the sum, we have to make the variables into integers
+        var sum = parseInt(a) + parseInt(b);
+
+        // display the result using inner HTML
+        document.getElementById("output").innerHTML = " SUM = " + sum;
+      }
+
+      //
+
+      //   // prompt takes the input from the windows dialog box
+
+      //   let a = prompt("enter a ? : ");
+      //   let b = prompt("enter b ? : ");
+
+      //   // findin the sum, we have to make the variables into integers
+      //   var sum = parseInt(a) + parseInt(b);
+
+      //   // display using an alert box
+      //   alert("sum = " + sum);
+    </script>
+  </body>
+</html>

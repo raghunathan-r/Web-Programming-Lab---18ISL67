@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number and squares</title>
+  </head>
+  <body>
+    <h2>Printing numbers and Squares</h2>
+
+    <br />
+
+    <a href="./index_web_dev_lab_3_26_05_22.html">Back</a>
+
+    <script>
+      let n = prompt("Upper limit ? : ");
+      n = parseInt(n);
+      let output_text = "\n";
+
+      // creating an output string in proper format for the squares
+      for (let i = 1; i <= n; i++) {
+        output_text += "\n" + i + " - " + i * i + "\n";
+      }
+
+      alert(output_text);
+    </script>
+  </body>
+</html>
