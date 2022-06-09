@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Lab - 4 - Dropdown</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+mGLr4DyU
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>ArrayMethods In JavaSCript</h1>
+    <style>
+        .dropbtn {
+          background-color: #0b8839;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+        }
+        
+        .dropbtn:hover, .dropbtn:focus {
+          background-color: #2980B9;
+        }
+        
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #799453;
+          min-width: 160px;
+          overflow: auto;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        
+        .dropdown-content a {
+          color: rgb(74, 53, 199);
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        
+        .dropdown a:hover {background-color: #ddd;}
+        
+        .show {display: block;}
+        </style>
+        </head>
+        <body>
+        
+</head>
+<body>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown"  class="dropdown-content">
+          <a id="Push" onclick="display('Push')">Push</a>
+          <a id="Pop" onclick="display('Pop')" >Pop</a>
+          <a id="Shift" onclick="display('Shift')">Shift</a>
+          <a id="Unshift" onclick="display('Unshift')">Unshift</a>
+          <a id="Concat" onclick="display('Concat')">Concat</a>
+          <a id="delete" onclick="display('delete')">delete</a>
+          <a id="length" onclick="display('length')">length</a>
+          <a id="merge" onclick="display('merge')">merge</a>
+          </div>
+      </div>
+    <p id="push1"></p>
+    <p id="pop1"></p>
+    <p id="shift1"></p>
+    <p id="unshift1"></p>
+    <p id="concat"></p>
+    <p id="delete1"></p>
+    <p id="length1"></p>
+    <p id="merge"></p>
+
+    <script>
+        function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+const odd = ["one","three","five","seven","nine"];
+const even = ["two","four"];
+function display(event)
+{
+       switch(event){
+       case "Push":
+       odd.push("one");
+       document.getElementById("push1").innerHTML = odd;
+       break;
+       case "Pop":
+       odd.pop();
+       document.getElementById("pop1").innerHTML = odd;
+       break;
+       case "Shift":
+       odd.shift();
+       document.getElementById("shift1").innerHTML = odd;
+       break;
+       case "Unshift":
+       odd.unshift("nine");
+       document.getElementById("unshift1").innerHTML = odd;
+       break;
+       case "Concat":
+       const life = odd.concat(even);
+       document.getElementById("concat").innerHTML = life;
+       break;
+       case "length":
+       document.getElementById("length1").innerHTML = odd.length;
+       break;
+       case "delete":
+       delete odd[0];  
+       document.getElementById("delete1").innerHTML = odd;
+       break;
+
+
+   }
+
+}
+    </script>
+</body>
+</html>
