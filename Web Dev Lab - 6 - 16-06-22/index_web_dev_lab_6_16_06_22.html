@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Lab - 6</title>
+</head>
+<body>
+    
+    <h2>Web Dev Lab - 6 - Regular expressions</h2>
+
+    <a href="#" onclick="validateDate()"; return false;> 1. Validate the date and extract</a>
+
+    <br>
+
+    <a href="#" onclick="runMailCode()"; return false;> 2. Validate the email address</a>
+
+    
+</body>
+
+<script>
+
+    // Q1 function to valudate the date
+    function validateDate(){
+
+        // Albert Einstein was born in Ulm, on 14/03/1879
+        // Albert Einstein was born in Ulm, on 12/03/1879
+
+        let date_regex = /^(1[0-2]|0?[1-9])\/(3[01]|[12][0-9]|0?[1-9])\/(?:[0-9]{4})$/;
+
+        let given_string = prompt("Enter the string with/without date : ");
+
+        var extrated_words = given_string.split(' ');
+        alert("Extracted words are : " + extrated_words)
+
+        var date_present = 0;
+
+        alert("=> date_regex.exec(given_string) " + date_regex.exec(given_string));
+
+        // trying using splitting and ecex function
+        for(word in extrated_words){
+            if(word.match(date_regex)){
+                alert("The date given is " + date_regex.exec(word));
+                date_present = 1;
+                break;
+            }
+        }
+
+        if(date_present == 0){
+            alert("The date is not present");
+        }
+
+        // tried using splitting and testing
+        /*
+        for(word in extrated_words){
+            if(date_present.test(word)){
+                alert("The date given is " + word);
+                date_present = 1;
+            }
+        }
+
+        if(date_present == 0){
+            alert("The date is not present");
+        }
+        */
+
+
+
+
+    }
+
+    // Q2 
+    function runMailCode(){
+        var user_mail = prompt("Enter the email address : ");
+
+        validateEmail(user_mail);
+    }
+
+    // Q2. function to valudate the email address
+
+    function validateEmail(email_given){
+
+        // John.Doe.12#4@gmail.com
+
+        // var mail_regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var mail_regex = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+
+        alert("The email given is " + email_given)
+
+        alert("mail_regex.test(email_given) => " + mail_regex.test(email_given));
+
+        if(mail_regex.test(email_given)){
+            alert("The entered email is valid");
+        } else{
+            alert("The given email is invalid");
+        }
+
+    }
+
+</script>
+
+</html>
