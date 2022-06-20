@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16 Suraj LMS - Drown down string methods</title>
+</head>
+<body>
+    
+    <h2>16 Suraj LMS - String functions using drop down</h2>
+
+    <br>
+
+    <label for="string_functions">String functions</label>
+
+    <br>
+
+    <select name="" id="string_functions_box" onchange="driverFunctionForDropDown();">
+        <option value="0">choose</option>
+        <option value="1">enter string</option>
+        <option value="2">to up case</option>
+        <option value="3">to lower case</option>
+    </select>
+        
+
+</body>
+
+<script>
+    // Q16. Create a HTML page with a drop down containing all string methods and select of any method perform suitable operations and display result on HTML page Input: select one option (ex: toLowerCase()] Output: String should be converted to Lowercase
+
+    // https://www.w3schools.com/howto/howto_js_dropdown.asp
+
+    // https://stackoverflow.com/questions/3487263/how-to-use-onclick-or-onselect-on-option-tag-in-a-jsp-page
+
+    var user_string;
+
+    function driverFunctionForDropDown(){
+        var selectBox = document.getElementById("string_functions_box");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        // alert(typeof selectedValue);
+
+        switch(selectedValue){
+            case '1':
+                user_string = prompt("Enter the string : ");
+                break;
+            case '2':
+                alert("The string in upper case : \n" + user_string.toUpperCase());
+                break;
+            case '3':
+                alert("The string in lower case : \n" + user_string.toLowerCase());
+                break;
+        }
+    }
+
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 Looping Questions - LMS</title>
+</head>
+<body>
+    
+    <h1>2 Looping Questions</h1>
+
+    <a href="#" onclick="displaySquareOfNumbersFromPrompt()"; return false;>Q6. Take input from prompt and till that limit display the number and the squares of the numbers till that limit.</a>
+
+    <br>
+
+    <a href="#" onclick="printNumbersBackwardsSizeTwoNumbers()"; return false;>Q7. Write a program to print numbers backwards from 100 to 1 by skipping 2 numbers i.e. 100 97 94 91 88 85 82 79. . . 22 19 16 13 10 7 4 1</a>
+</body>
+
+<script>
+
+    // Q6. Take input from prompt and till that limit display the number and the squares of the numbers till that limit.
+
+    function displaySquareOfNumbersFromPrompt(){
+
+        let nth_number = prompt("Enter the number till which you want to print squares : ");
+
+        let output_string = "";
+        for(var num = 1; num <= nth_number; num++){
+
+            output_string += num + "*" + num + " = " + num*num + "\n";
+        }
+
+        prompt(output_string);
+    }
+
+    // Q7. Write a program to print numbers backwards from 100 to 1 by skipping 2 numbers i.e. 100 97 94 91 88 85 82 79. . . 22 19 16 13 10 7 4 1
+
+    function printNumbersBackwardsSizeTwoNumbers(){
+
+        let output_string = "";
+
+        let skip_count = 2;
+        for(var num = 100; num > 0; num--){
+
+            if(skip_count == 2){
+                output_string += num + " , ";
+                skip_count = 0;
+            } else{
+                skip_count++;
+            }
+        }
+
+        alert(output_string);
+
+    }
+
+
+
+</script>
+
+</html>

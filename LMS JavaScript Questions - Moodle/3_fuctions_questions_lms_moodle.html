@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Functions javascript - LMS</title>
+</head>
+<body>
+    
+    <h1>4 Functions questions javascript</h1>
+
+    <a href="#" onclick="capitalizeEachLetterInString()" return false;> Q8. A) to capitalize the first letter of each word in a string</a>
+
+    <br>
+
+    <a href="#" onclick="insertStringInGivenPosition()"; return false;>Q8. B) to insert a string within a string at a particular position</a>
+
+    <br>
+
+    <a href="#" onclick="checkIfInputIsString()"; return false;>Q9. C) to check whether an `input` is a string or not</a>
+
+    <br>
+
+    <a href="#" onclick="splitStringIntoWords()"; return false;>Q9. D) to split a string and convert it into an array of words.</a>
+
+</body>
+
+<script>
+
+    // Q8 a. to capitalize the first letter of each word in a string
+
+    function capitalizeEachLetterInString(){
+
+        var user_string = prompt("Enter a string : ");
+
+        var capitalized_string = "";
+
+        for(index in user_string){
+            capitalized_string += user_string[index].toUpperCase();
+        }
+
+        alert("The capitalized string : \n" + capitalized_string);
+    }
+
+    // Q8 b. to insert a string within a string at a particular position
+
+    function insertStringInGivenPosition(){
+
+        var user_string = prompt("Enter a string : ");
+
+        var insert_index = prompt("Enter the position to be insert string in : ");
+
+        var string_to_insert = prompt("Enter the string to be inserted : ");
+
+        var final_string = "";
+        var index;
+        for(index = 0; index < insert_index; i++){
+            final_string[index] += user_string[index];
+        }
+
+        var continue_from_index = index;
+
+        for(var second_index in string_to_insert){
+            final_string[index++] += string_to_insert[second_index];
+        }
+
+        index--;
+
+        for(var temp_index = continue_from_index; user_string[temp_index] != '\0'; i++){
+            final_string[index++] += user_string[temp_index];
+        }
+
+        final_string[++index] = '\0';
+
+        alert("The combined string is : \n" + final_string);
+    }
+
+    // Q9. c. to check whether an `input` is a string or not
+
+    function checkIfInputIsString(){
+
+        var user_input = prompt("Enter a value : ");
+
+        if(typeof user_input === 'string'){
+            alert("Given input is a string");
+        } else{
+            alert("Given input is not string");
+        }
+
+    }
+
+    // Q9. D) to split a string and convert it into an array of words.
+
+    function splitStringIntoWords(){
+
+        var user_string = prompt("Enter a string : ");
+
+        var array_of_words = user_string.split(" ");
+
+        alert("The array of words are : \n" + array_of_words);
+    }
+
+</script>
+
+</html>

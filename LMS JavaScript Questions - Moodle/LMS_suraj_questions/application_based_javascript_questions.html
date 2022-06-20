@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application based JS questions</title>
+</head>
+<body>
+    
+    <a href="#" onclick="driverCowChickenFunction()"; return false;>Q12. cows chickens</a>
+    
+    <br>
+
+    <a href="#" onclick="processTheName()"; return false;>Q13. process the name</a>
+
+    <br>
+
+    <a href="#" onclick="extractUniqueCharactersToString()"; return false;>Q14. extract unique characters</a>
+
+    <br>
+
+    <a href="#" onclick="checkIfPalindrome()"; return false;>Q15. check if string is palindrome</a>
+
+    <br>
+
+    <a href="./16_suraj_lms_string_methods_drop_down.html">Q16. drop down string functions</a>
+
+    <br>
+
+    <h2>REGULAR EXPRESSIONS</h2>
+
+    <br>
+
+    <a href="#" onclick="extractTheDate()"; return false;> Q2. Validate date</a>
+
+</body>
+
+<script>
+
+    // Q12.
+    function driverCowChickenFunction(){
+        var number_of_cows = prompt("Enter the number of cows : ");
+        var number_of_chickens = prompt("Enter the number of chickens : ");
+        
+        printFarmInventory(number_of_cows, number_of_chickens);
+    }
+
+    function printFarmInventory(no_cows, no_chicks){
+        var zero_count;
+
+        for(zero_count = 3 - no_cows.length; zero_count > 0; zero_count--){
+            no_cows = "0" + no_cows;
+        }
+        no_cows += " cows\n";
+
+        for(zero_count = 3 - no_chicks.length; zero_count > 0; zero_count--){
+            no_chicks = "0" + no_chicks;
+        }
+        no_chicks += " chickens\n";
+
+        alert(no_cows + "\n" + no_chicks);
+    }
+
+    // Q13. Write a JavaScript code to process the name as the sample below. Sample Input: Rama Krishna Narayan | Sample Output: R. K. Narayan
+    // Q10. My LMS - Strings
+    function processTheName(){
+        
+        var user_input = prompt("Enter the name :");
+
+        var words_in_name = user_input.split(" ");
+
+        var processed_name = "";
+
+        // alert("words_in_name.length => " + words_in_name.length);
+
+        for(index = 0; index < words_in_name.length - 1; index++){
+            processed_name += words_in_name[index].charAt(0) + ". ";
+        }
+
+        processed_name += words_in_name[words_in_name.length - 1];
+
+        alert("The name is : \n" + processed_name);
+    }
+
+    // Q14. Write a JavaScript function to extract unique characters from a string. | Example string : "thequickbrownfoxjumpsoverthelazydog" | Expected Output : "thequickbrownfxjmpsvlazydg"
+
+    function extractUniqueCharactersToString(){
+
+        /*
+            ip : abca
+            op : abc
+        */
+
+        var user_string = prompt("Enter a string : ");
+
+        var unique_character_string = "";
+        for(var index = 0; index < user_string.length; i++){
+
+            // alert("user_string[i] is of type : " + typeof user_string[i]);
+
+            if(unique_character_string.includes(user_string[i]) == false){
+                unique_character_string += user_string[i];   
+            }
+        }
+
+        alert("The unique character string is : \n" + unique_character_string);
+    }
+
+    // Q15. Write an arrow function, check_palindrome() to check whether the given string is a palindrome or not. The function should return true if it is a palindrome else it should return false. Assume that all the letters in the given string are all of the same case.Example: MAN, civic, WOW etc.
+
+
+    var checkIfPalindrome = () => {
+
+        var user_string = prompt("Enter a string : ");
+
+        var isPalindrome = 1;
+
+        for(var i = 0; i < user_string.length / 2; i++){
+            if(user_string[i] !== user_string[user_string.length - 1 -i]){
+                alert("The given string is not a palindrome 👎");
+                isPalindrome = 0;
+                break;
+            }
+        }
+
+        if(isPalindrome == 1){
+            alert("It is a palindrome ! 👍");
+        }
+    }
+
+    // Q16. Create a HTML page with a drop down containing all string methods and select of any method perform suitable operations and display result on HTML page Input: select one option (ex: toLowerCase()] Output: String should be converted to Lowercase'
+
+    // Q17.
+
+    // => REGULAR EXPRESSIONS
+
+    // Q2. Write a JavaScript program to search a date within a string. Sample Input: "Albert Einstein was born in Ulm, on 14/03/1879." Sample Output:14/03/1879
+
+    function extractTheDate(){
+
+        var user_string = prompt("Enter the string that may or may not contain the date : ");
+
+        var date_format = /^(1[0-2]|0?[1-9])\/(3[01]|[12][0-9]|0?[1-9])\/(?:[0-9]{2})?[0-9]{2}$/;
+
+        alert("The date is : " + user_string.match(date_format));
+
+        /*
+        if(date_format.test(user_string)){
+            alert("The date is : " + user_string.match(date_format));
+        } else{
+            alert("Sorry, could find a date");
+        }
+        */
+    }
+
+    // Q3. Write a pattern that matches e-mail addresses. Syntax: localpart@domain
+
+    // solution -> https://www.w3resource.com/javascript-exercises/javascript-regexp-exercise-3.php
+
+    function validateTheEmail(){
+
+        mail_format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    }
+
+</script>
+
+</html>

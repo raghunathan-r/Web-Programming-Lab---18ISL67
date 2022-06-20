@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash JS</title>
+</head>
+<body>
+    
+    <a href="#" onclick="primeGame()"; return false;>Q6. Prime number game - Suraj PDF</a>
+
+</body>
+
+<script>
+
+    // Q6. Suraj PDF
+
+    function primeGame(){
+        var L = prompt("Enter the lower range : ");
+        L = parseInt(L);
+
+        var lowest_prime = 0;
+        var highest_prime = 0;
+
+        var R = prompt("Enter the higher range : ");
+        R = parseInt(R);
+
+        var isPrime = 0;
+
+        for(var num = L; num < R; num--){
+            for(var i = 2; i < num; i++){
+                if(num % i === 0){
+                    break;
+                    isPrime = 0;
+                }
+                isPrime = 1;
+            }
+            if(isPrime === 1){
+                lowest_prime = num;
+                break;
+            }
+        }
+
+        for(var num = R; num > L; num--){
+            for(var i = 2; i < num; i++){
+                if(num % i === 0){
+                    break;
+                    isPrime = 0;
+                }
+                isPrime = 1;
+            }
+            if(isPrime === 1){
+                highest_prime = num;
+                break;
+            }
+        }
+        
+        /*
+        for(var i = R; i > 2; i--){
+            if(R % i === 0)
+                break;
+            else{
+                highest_prime = i;
+                break;
+            }                
+        }
+        */
+
+        var result = highest_prime - lowest_prime;
+
+        var users_answers = prompt("Enter your answer : ");
+        users_answers = parseInt(users_answers);
+
+        if(users_answers === result){
+            alert("You WIN");
+        } else{
+            alert("Sorry the answer is " + result);
+        }
+
+    }
+
+</script>
+
+</html>

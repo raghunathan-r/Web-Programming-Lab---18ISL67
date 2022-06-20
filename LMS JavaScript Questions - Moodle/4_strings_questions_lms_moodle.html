@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Strings questions</title>
+</head>
+<body>
+
+    <h1>4 String Questions</h1>
+
+    <a href="#" onclick="encryptUsingCaesarCipher()"; return false;>Q9. Write JavaScript code to encrypt the text using Caesar Cipher technique. Display the encrypted text. Prompt the user for input and the shift pattern.</a>
+
+    <br>
+
+
+
+</body>
+
+<script>
+    // Q9. Write JavaScript code to encrypt the text using Caesar Cipher technique. Display the encrypted text. Prompt the user for input and the shift pattern.
+
+    function encryptUsingCaesarCipher(){
+
+        var plain_text = prompt("Enter the plain text : ");
+
+        var key = prompt("Enter the key : ");
+
+        var alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+        var cipher_text = "";
+        for(var index = 0; index < plain_text.length; index++){
+
+            alert("plain_text.length = " + plain_text.length);
+
+            alert("plain_text.charCodeAt(index)" + index + " is " + plain_text.charCodeAt(index));
+
+            let offset = (index + n)
+            var char_code = mod((97 - plain_text.charCodeAt(index)) + key, 26);
+
+            alert("String.fromCharCode(char_code)" + String.fromCharCode(char_code));
+
+            cipher_text += String.fromCharCode(char_code);
+        }
+
+        alert("The cipher text is : \n" + cipher_text);
+    }
+</script>
+
+</html>
