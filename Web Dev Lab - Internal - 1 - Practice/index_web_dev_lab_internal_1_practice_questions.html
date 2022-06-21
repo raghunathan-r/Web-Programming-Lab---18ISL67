@@ -137,6 +137,7 @@
             character_value = plain_text[index].charCodeAt(0) - 'a'.charCodeAt(0);
             console.log("For character " + plain_text[index] + "\n");
             console.log("char_value = " + character_value + "\n");
+            console.log("(character_value % 26) + shift_value = " + (character_value % 26) + shift_value +"\n");
             console.log("So the cipher alphabet is " + alphabets[(character_value % 26) + shift_value] + "\n");
 
             cipher_text += alphabets.charAt((character_value % 25) + shift_value);
