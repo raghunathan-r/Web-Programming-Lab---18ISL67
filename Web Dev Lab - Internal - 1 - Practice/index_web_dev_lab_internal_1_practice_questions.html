@@ -15,13 +15,143 @@
 
     <a href="#">Q1. Write a function numTest that takes a number as an argument and returns a Promise that tests if the value is less than or greater than the value 20.</a>
 
+    <br>
+
+    <a href="#" onclick="question8DriverFunction()"; return false;>Q8. Write an arrow function names numSum that accepts an array </a>
+
+    <br>
+
+    <a href="#" onclick="printDisariumNumbers()"; return false;>Q10. Disarium numbers</a>
+
+    <br>
+
+    <a href="#" onclick="question11DriverFunction()"; return false;>Q11. caesar Cipher</a>
+
 </body>
 
 <script>
 
     // Q1. Write a function numTest that takes a number as an argument and returns a Promise that tests if the value is less than or greater the value 20.
 
+    // Q8. 
+    var sumEvens = (user_input_array) => {
 
+        var even_sum_total = 0;
+        for(var i = 0; i < user_input_array.length; i++){
+
+            if(user_input_array[i] % 2 == 0){
+                even_sum_total += user_input_array[i];
+            }
+        }
+
+        alert("The sum of even elements is : " + even_sum_total);
+    }
+
+    function question8DriverFunction(){
+        var user_input_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        var user_input_array = prompt("Enter the integer array : ");
+        user_input_array = user_input_array.split(" ");
+
+        for(var index in user_input_array){
+            user_input_array[index] = parseInt(user_input_array[index]);
+        }
+
+        alert("The entered array is : \n" + user_input_array);
+
+        sumEvens(user_input_array);
+    }
+    
+    // Q10. Disarium number
+    function checkIfDisarium(num){
+        // var digit, position, numSum = 0;
+
+        /*
+        for(position = num.length; position > 0; position--){
+            num = parseInt(num);
+
+            digit = num % 10;
+            numSum += Math.pow(digit, position);
+            num = num/10;
+        }
+        */
+
+        /*
+        position = num.toString().length;
+        console.log("position = num.toString().length;" + num.toString().length);
+
+        while(num > 0){
+            digit = num % 10;
+            numSum += Math.pow(digit, position);
+            console.log("Math.pow(digit, position) " + Math.pow(digit, position) + "\n");
+            num = num/10;
+            position--;
+        }
+
+        console.log("For number : " + num + "\n");
+        console.log("Type of num : " + typeof num + "\n");
+        console.log("Type of numSum : " + typeof numSum + "\n");
+        console.log("The numSum is : " + numSum);
+
+        if(numSum == num){
+            return 1;
+        }else{
+            return 0;
+        }
+        */
+
+        var array_of_digits = num.split("");
+        var numSum = 0;
+
+        for(let position = 0; position < array_of_digits.length; position++){
+            numSum += Math.pow(parseInt(array_of_digits[position]), position + 1)
+        }
+
+        return num == numSum;
+    }
+
+    function printDisariumNumbers(){
+
+        var output_string = "";
+
+        for(let number = 1; number <= 100; number++){
+
+            if(checkIfDisarium(number.toString())){
+                console.log(number + "\n");
+                output_string = output_string + number.toString() + ", ";
+            }
+        }
+        
+        alert("The disarium numbers between :\n" + output_string);
+    }
+
+    // Q11. Caesar cipher
+    function caesarCipher(plain_text, shift_value){
+
+        cipher_text = "";
+
+        alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+        var character_value = 0;
+        for(let index = 0; index < plain_text.length; index++){
+            character_value = plain_text[index].charCodeAt(0) - 'a'.charCodeAt(0);
+            console.log("For character " + plain_text[index] + "\n");
+            console.log("char_value = " + character_value + "\n");
+            console.log("So the cipher alphabet is " + alphabets[(character_value % 26) + shift_value] + "\n");
+
+            cipher_text += alphabets.charAt((character_value % 25) + shift_value);
+        }
+
+        alert("The cipher text is : " + cipher_text);
+
+    }
+
+    function question11DriverFunction(){
+        var plain_text = prompt("Enter the plain text : ");
+        var shift_value = prompt("Enter the shift value : ");
+
+        caesarCipher(plain_text, shift_value);
+    }
 
 </script>
 
