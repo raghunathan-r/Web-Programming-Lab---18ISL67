@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort alphabets</title>
+</head>
+<body>
+
+    <h1>Q6. Write a java script code that returns a passed string in alphabetical order. Use addEventListener() method.</h1>
+
+    <p>Enter the string : </p>
+    <input type="string" id="user_string_id">
+
+    <button id="sort_button_id" > SORT NOW !</button>
+
+    <br>
+    
+    <h2>The sorted string is <span id="sorted_sting_element_id">...</span></h2>
+    
+</body>
+
+<script>
+
+    // NOT WORKING - Unable to get the user string from text box
+
+    // Q6. Write a java script code that returns a passed string in alphabetical order. Use addEventListener() method.
+
+    var sort_button = document.getElementById("sort_button_id");
+    var user_string = document.getElementById("user_string_id").value;
+
+
+    sort_button.addEventListener("click", () => sortTheString(user_string))
+
+    function sortTheString(user_string){
+
+        console.log("The entered string is : " + user_string + "\n");
+
+        let sorted_string = "";
+
+        for(i = 0; i < user_string.length - 1; i++){
+            for(j = i + 1; j < user_string.length; j++){
+                if(user_string[j] > user_string[i]){
+                    let temp = user_string[i];
+                    user_string[i] = user_string[j];
+                    user_string[j] = temp;
+                }
+            }
+        }
+
+        console.log("The sorted string is : " + user_string + "\n");
+    }
+
+    // document.getElementById("sorted_sting_element_id").innerHTML(user_string);
+
+</script>
+
+</html>

@@ -13,11 +13,43 @@
 
     <h2>General questions - Part - A</h2>
 
-    <a href="#">Q1. Write a function numTest that takes a number as an argument and returns a Promise that tests if the value is less than or greater than the value 20.</a>
+    <a href="#" onclick="question1DriverFunction()"; return false>Q1. Write a function numTest that takes a number as an argument and returns a Promise that tests if the value is less than or greater than the value 20.</a>
+
+    <br>
+
+    <a href="#" onclick="question2numTextCallBackDriverFunction()"; return false;>Q2. NumText call back function promise stuff</a>
+
+    <br>
+
+    <a href="#" onclick="question2numTestUsingPromiseDriverFunction()"; return false;>Q2. NumTest using promise onfulfilled and onrejected</a>
+
+    <br>
+
+    <a href="" onclick="storeRetrieveIterateFromSet()"; return false;>Q3. Store retrieve iterate over set</a>
+
+    <br>
+
+    <a href="#" onclick="storeRetrieveIterateFromMap()"; return false;>Q4. Map store retrieve iterate</a>
+
+    <br>
+
+    <a href="#" onclick="question5ArrayDriverFunction()"; return false;>Q5. Array insert and delete in position</a>
+
+    <br>
+
+    <a href="./q6_sort_alphabet_use_event_listener.html">Q6. Write a java script code that returns a passed string in alphabetical order. Use addEventListener() method.</a>
+
+    <br>
+
+    <a href="#" onclick="reverseTheNumber()"; return false;>Q7. Apply java script arrow function to reverse a given number.</a>
 
     <br>
 
     <a href="#" onclick="question8DriverFunction()"; return false;>Q8. Write an arrow function names numSum that accepts an array </a>
+
+    <br>
+
+    <a href="#" onclick="question9DriverFunction()"; return false;>Q9. Jump search</a>
 
     <br>
 
@@ -27,15 +59,324 @@
 
     <a href="#" onclick="question11DriverFunction()"; return false;>Q11. caesar Cipher</a>
 
+    <br>
+
+    <a href="#" onclick="question12stringsDriverFunction()"; return false;>Q12. String function</a>
+
 </body>
 
 <script>
 
     // Q1. Write a function numTest that takes a number as an argument and returns a Promise that tests if the value is less than or greater the value 20.
 
-    // Q8. 
+    /*
+    // my code for the same
+    var numTest = function(user_number) {
+
+        console.log("numTest() function was called with user_number = \n" + user_number);
+
+        return new Promise((resolve, reject) => {
+            if(user_number > 20){
+                resolve("The number is greater than 20");
+            } else{
+                reject("The number is less than 20");
+            }
+        })
+    }
+    */
+
+    function numTest(user_number){
+
+        return new Promise(function(resolve, reject){
+            if(user_number > 20){
+                resolve("Success the number is greater than 20!");
+            } else{
+                resolve("Fails the number is not greater than 20");
+            }
+        })
+    }
+
+    function question1DriverFunction(){
+        let user_number = prompt("Enter a number to check : ");
+
+        numTest(user_number).then((message) => {
+            alert(message);
+        }).catch((error) => {
+            alert(error);
+        })
+    }
+
+    // Q2. Write a javascript code to handle multiple call back functions using javascript promises (use promiseobject.then(onfulfilled, onrejected)).
+
+    /*
+    // the code using call back functions the above code
+    function numTestCallBackVersion(user_number, callback, errorCallback){
+
+        if(user_number > 20){
+            callback("Success the number is greater than 20!");
+        } else{
+            errorCallback("The number is less than 20");
+
+        }
+    }
+
+    function question2numTextCallBackDriverFunction(){
+        let user_number = prompt("Enter a number : ");
+
+        numTestCallBackVersion(user_number, (message) => {
+            alert(message);
+        }, (error) => {
+            alert(error);
+        })   
+    }
+    */
+
+    // the code using promises
+
+    function numTestUsingPromise(user_number){
+        return new Promise((onfulfilled, onrejected) => {
+            if(user_number > 20){
+                onfulfilled("Success the number is greater than 20!");
+            } else{
+                onrejected("Sorry, the number is not greater than 20");
+            }
+        })
+    }
+
+    function question2numTestUsingPromiseDriverFunction(){
+        let user_number = prompt("Enter a number : ");
+
+        numTestUsingPromise(user_number).then((onfulfilled) => {
+            alert(onfulfilled);
+        }).catch((onrejected) => {
+            alert(onrejected);
+        })
+    }
+
+    // Q3. Write a program to store values into a set, and retrieve values from the set, to iterate over the set.
+
+    function storeRetrieveIterateFromSet(){
+
+        // a set can be a constant as well
+        let user_set = new Set();
+
+        let user_input = prompt("Enter the values to store into a set : ");
+        user_input = user_input.split(" ");
+
+        for(let index = 0; index < user_input.length; index++){
+            user_set.add(user_input[index]);
+        }
+
+        // retrieving the values in the set
+        let output_string = "";
+        user_set.forEach((value) => {
+            output_string += value + " ";
+        })
+
+        alert("The entered values are :\n" + output_string);
+
+        // iterating through the elements
+        const user_set_iterator = user_set.values; 
+        console.log("Iterating over the values in set using .values()\n");
+        
+        for(element in user_set_iterator){
+            output_string += element + ", ";
+        }
+        alert("The elements in the set after intreating are :\n" + output_string);
+
+    }
+
+    // Q4. Write a program to store values into a map, and to retrieve values from the map using key, to iterate over the map.
+
+    function storeRetrieveIterateFromMap(){
+
+        const users_map_data = new Map([
+            ["three", 3],
+            ["four", 4],
+            ["one", 1]
+        ]);
+
+        // storing values into the map
+        var input_count = prompt("How many entries do you want to provide ? :");
+
+        for(let index = 0; index < input_count; index++){
+            let users_key_value = prompt("Enter a key value ( for eg. one 1 ) : ");
+            users_key_value = users_key_value.split(" ");
+
+            users_map_data.set(users_key_value[0], users_key_value[1]);
+        }
+
+        let output_string = "";
+        // retrieving values form the map using key
+
+        // console.log("users_map_data.keys()" + users_map_data.keys() + "\n");
+        console.log("users_map_data.size : " + users_map_data.size + "\n");
+
+        // this is using the keys.next()
+        var keys = users_map_data.keys();
+        for(i = 0; i < users_map_data.size; i++){
+            
+            let key = keys.next().value;
+            let value = users_map_data.get(key);
+
+            output_string += key + " -> " + value + "\n";
+            
+            // for dubbing purpose
+            console.log("key : " + key + " value : " + value + "\n");
+        }
+        alert("The value obtained from the keys are :\n" + output_string);
+
+        /*
+        // this is without using .next [ trying out ] DOESN'T WORK
+        var keys = users_map_data.keys();
+        for(let key in keys){
+                    
+            let value = users_map_data.get(key);
+
+            output_string += key + " -> " + value + "\n";
+            
+            // for dubbing purpose
+            console.log("key : " + key + " value : " + value + "\n");
+        }
+        */
+
+        // iterating over the map using forEach
+
+        output_string = "";
+        users_map_data.forEach((value, key) => {
+            output_string += key + " : " + value + "\n";
+        })
+        alert("The key value after iterating using forEach :\n" + output_string);
+
+    }
+
+    // Q5. Write a java script code to insert and remove elements form an array from the given index. [ NOT WORKING]
+
+    /*
+    function insertElementsToArray(array, index_position, value){
+
+        let new_array = new Array(array.length + 1);
+
+        // DEBUGGING
+        console.log("Size of old array : " + array.size + " | new array size : " + new_array.size);
+
+
+        if(index_position > array.length){
+            alert("Sorry, cannot insert invalid position");
+        } else if(index_position = array.length - 1){
+            array.push(value);
+            new_array = array;
+        } else if(index_position = 0){
+            array.unshift(value);
+        } else{
+            new_array = array(0, index_position - 1) + value + array(index_position, array.length);
+
+        }
+
+        return new_array;
+    }
+
+    function question5ArrayDriverFunction(){
+
+        let user_input = prompt("Enter the elements in the array : ");
+        let user_array = user_input.split(" ");
+
+        do{
+
+            let choice = parseInt(prompt("Options available :\n\t1. Insert in position\n\t2. Delete from position\n\t3. Exit\nYour choice ? :"));
+
+            switch(choice){
+                case 1:
+                    user_array =  insertElementsToArray(user_array, parseInt(prompt("Position ? : ")), prompt("Value ? : "));
+                    console.log("user_input after inserting = " + user_array + "\n");
+
+                    break;
+                case 3:
+                    prompt("Thank you");
+                    break;
+                default:
+                    prompt("Sorry, try again");
+            }
+
+        }while(choice != 3);
+
+        // DEBUGGING
+        console.log("typeof user_input = " + typeof user_array + "\n");
+        console.log("user_input = " + user_array + "\n");
+    }
+    */
+
+    function question5ArrayDriverFunction(){
+
+        let user_input = prompt("Enter the elements in the array : ");
+        let user_array = user_input.split(" ");
+
+        do{
+
+            var choice = parseInt(prompt("Options available :\n\t1. Insert in position\n\t2. Delete from position\n\t3. Exit\nYour choice ? :"));
+
+            switch(choice){
+                case 1:
+                    let value = prompt("Value ? :");
+                    let index_position = parseInt(prompt("Position ? : "));
+
+                    if(index_position = 0)
+                        user_array.unshift(value);
+                    else if(index_position = user_array.length -1)
+                        user_array.push(value);
+                    else
+                        user_array.splice(index_position, 0, value);
+
+                    console.log("user_input = " + user_array + "\n");
+
+                    break;
+                case 3:
+                    prompt("Thank you");
+                    break;
+                default:
+                    prompt("Sorry, try again");
+            }
+
+        }while(choice != 3);
+
+        // DEBUGGING
+        console.log("typeof user_input = " + typeof user_array + "\n");
+        console.log("user_input = " + user_array + "\n");
+    }
+
+    // Q6. Write a java script code that returns a passed string in alphabetical order. Use addEventListener() method.
+
+    // code is in separate file
+
+    // Q7. Apply java script arrow function to reverse a given number. Given number = 12243. Expected output = 34221.
+
+    var reverseTheNumber = () => {
+
+        user_number = prompt("Enter a number : ");
+
+        array_of_digits = user_number.split("");
+
+        // DEBUGGING 
+        console.log("The digits are : " + array_of_digits + "\n");
+        console.log("The type of value is  : " + typeof array_of_digits[0] + "\n");
+        console.log("The digit array length is  : " + array_of_digits.length + "\n");
+        
+
+        let reversed_number = "";
+        for(i = array_of_digits.length - 1; i >= 0; i--){
+            reversed_number += array_of_digits[i];
+        }
+
+        alert("The reversed number is : " + reversed_number);
+    }
+
+
+    // Q8. Write a function named sumEvens that accepts an array of numbers and returns the sum of the even numbers in the array.
+
     var sumEvens = (user_input_array) => {
 
+        console.log("The type of user_input_array value is  : " + typeof user_input_array[0] + "\n");
+        
         var even_sum_total = 0;
         for(var i = 0; i < user_input_array.length; i++){
 
@@ -53,16 +394,120 @@
         var user_input_array = prompt("Enter the integer array : ");
         user_input_array = user_input_array.split(" ");
 
+        console.log("The entered value is  : " + user_input_array + "\n");
+
         for(var index in user_input_array){
             user_input_array[index] = parseInt(user_input_array[index]);
         }
+
+        console.log("The type of user_input_array value is  : " + typeof user_input_array[0] + "\n");
 
         alert("The entered array is : \n" + user_input_array);
 
         sumEvens(user_input_array);
     }
     
-    // Q10. Disarium number
+    // Q9. Write a java script code to perform jump search for a given key and report success or failure. Prompt the user to enter the key and a list of numbers.
+
+    /*
+        the time complexity of jump search is O(sqrt n)
+
+        index : 0 1 2 3 4 5 6 7 8 9  10 11
+        array : 1 2 3 4 5 6 7 9 9 10 11 12
+
+        Lets take a block size of    m = 3 (this is called the jump size)
+        The total number of elements n = 12
+
+        The array must be sorted
+
+        So the algorithm will jump like this
+        array : 1 2 3 4 5 6 7 9 9 10 11 12
+                |     |     |     | 
+                      |     |     |
+                            |     |
+                                  |
+
+        There will be two pointers 
+            low  = at lower index
+            high = at higher index
+        
+        We keep a count of number of jumps
+            jump = 
+
+        Finally after all the jumps when we exceed the boundary of the array we perform a liner search
+    */
+
+    function jumpSearch(array, key){
+
+        var array_of_elements = new Array();
+        for(element in array){
+            console.log("the type of element in array is -> " + typeof element + "\n");
+            console.log("the element in array is -> " + element + "\n");
+        }
+
+        let index_position = -1;
+
+        // the optimum block size for jumping 
+        let block_size = Math.sqrt(array.length);
+
+        // DEBUGGING
+        console.log("The sorted array is : " + array + "\n");
+        console.log("The array length is : " + array.length + "\n");
+        console.log("The block size is : " + block_size + "\n");
+
+
+        // now jumping till we find the block in which the element is present
+        var high_pointer = Math.sqrt(array.length);
+
+        var low_pointer = 0;
+
+        // we keep jumping till the last element in the block is greater than or equal to the element to be found
+        while(array[ Math.min(high_pointer, array.length) ] < key){
+
+            low_pointer = high_pointer;
+            high_pointer += block_size;
+
+            // if the lower pointer exceeds the array size that means the key is not there
+            if(low_pointer >= array.length){
+                return -1;
+            }
+
+        }
+
+        // now that we have the block in which teh element will be present we will perform a linear search
+        // console.log("The block in which the element might be present is : " + array.splice(low_pointer, high_pointer) + "\n");
+
+        for(low_pointer = low_pointer; low_pointer <= Math.min(high_pointer, array.length); low_pointer++){
+
+            if(array[low_pointer] == key){
+                return low_pointer;
+            }
+
+        }
+
+        return index_position;
+    }
+
+    function question9DriverFunction(){
+
+        user_array = prompt("Enter the elements in the array : ");
+        user_array = user_array.split(" ");
+
+        console.log("The entered array is : " + user_array + "\n");
+
+        element_to_find = prompt("Enter the element to find : ");
+
+        index_found_in = jumpSearch(user_array, element_to_find);
+
+        if(index_found_in != -1){
+            alert("Element found in index : " + index_found_in);
+        } else{
+            alert("Sorry, element not found");
+        }
+
+    }
+
+    // Q10. Write a java script code to print all the disarium bumbers between 1 and 100
     function checkIfDisarium(num){
         // var digit, position, numSum = 0;
 
@@ -125,7 +570,8 @@
         alert("The disarium numbers between :\n" + output_string);
     }
 
-    // Q11. Caesar cipher
+    // Q11. Write a java script code to encrypt the text using Caesar cipher technique. Display the encrypted text. Prompt the user for input and the shift patter.
+
     function caesarCipher(plain_text, shift_value){
 
         cipher_text = "";
@@ -135,10 +581,15 @@
         var character_value = 0;
         for(let index = 0; index < plain_text.length; index++){
             character_value = plain_text[index].charCodeAt(0) - 'a'.charCodeAt(0);
+
+            // DEBUGGING
             console.log("For character " + plain_text[index] + "\n");
             console.log("char_value = " + character_value + "\n");
-            console.log("(character_value % 26) + shift_value = " + (character_value % 26) + shift_value +"\n");
-            console.log("So the cipher alphabet is " + alphabets[(character_value % 26) + shift_value] + "\n");
+            console.log("type of char_value = " + typeof character_value + "\n");
+            console.log("shift_value = " + shift_value + "\n");
+            console.log("type of shift_value = " + typeof shift_value + "\n");
+            console.log("(character_value % 26) + shift_value = " + ((character_value % 26) + shift_value) +"\n");
+            console.log("So the cipher alphabet is " + alphabets.charAt((character_value % 26) + shift_value) + "\n\n");
 
             cipher_text += alphabets.charAt((character_value % 25) + shift_value);
         }
@@ -149,9 +600,46 @@
 
     function question11DriverFunction(){
         var plain_text = prompt("Enter the plain text : ");
-        var shift_value = prompt("Enter the shift value : ");
+        var shift_value = parseInt(prompt("Enter the shift value : "));
 
         caesarCipher(plain_text, shift_value);
+    }
+
+    // Q12. Write a java script function. A) capitalize first letter  of each word B) insert a string within a string in a given position C) check if an input is a string or not D) split a string and convert into array of words.
+
+    function question12stringsDriverFunction(){
+
+        var user_string = prompt("Enter a string : ");
+
+        console.log("type of user_string = " + typeof user_string + "\n");
+        console.log("the entered user_string = " + user_string + "\n");
+
+        var choice;
+
+        do{
+            choice = prompt("Options available are :\n\n\ta) capitalize first letter of each word \nYou choice ? : ");
+
+            switch(choice){
+                case "a":{
+                    
+                    array_of_words = user_string.split(" ");
+
+                    console.log("the array of entered words : " + array_of_words + "\n");
+                    for(i = 0; i < array_of_words.length; i++){
+                        array_of_words[i] = array_of_words[i].charAt(0).toUpperCase() + array_of_words[i].splice(1);
+
+                        console("array_of_words[i] = i = " + i + " -> " + array_of_words[i].charAt(0).toUpperCase() + "\n");
+                        console("array_of_words[i].charAt(0).toUpperCase() = " + array_of_words[i].charAt(0).toUpperCase() + "\n");
+                    }
+
+                    break;
+                }
+                default:
+                    alert("Sorry, try again");
+            }
+        }while(choice != "e");
+
+
     }
 
 </script>

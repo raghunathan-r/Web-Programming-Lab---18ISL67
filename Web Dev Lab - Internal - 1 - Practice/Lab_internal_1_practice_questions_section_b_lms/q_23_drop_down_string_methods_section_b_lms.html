@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop down string methods</title>
+</head>
+<body>
+
+    <h2>
+        Q23. Create a HTML page with a drop down containing all string methods and select of any method perform suitable operations and display result on HTML page | Input: select one option (ex: toLowerCase()] | Output: String should be converted to Lowercase
+    </h2>
+
+    <label for="string_functions_select_box"> available string functions </label>
+
+    <select name="string_functions_select_box" id="select_box_id" onchange="selectBoxStringFunctions()">
+        <option value="0">choose</option>
+        <option value="1">enter a string</option>
+        <option value="2">convert to lower case</option>
+        <option value="3">convert to upper case</option>
+    </select>
+    
+    <br>
+
+    <h4>Result : <span id="result_id">...</span></h4>
+
+</body>
+
+<script>
+    function selectBoxStringFunctions(){
+
+        console.log("The function is called\n");
+
+        select_box = document.getElementById("select_box_id");
+        choice = select_box.options[select_box.selectedIndex].value;
+
+        result_element = document.getElementById("result_id");
+
+        console.log("The object of the select box is " + select_box + "\n");
+        console.log("The selected choice is " + choice + "\n");
+        console.log("The typeof choice is " + typeof choice + "\n");
+
+
+        var user_string = "";
+
+        switch(choice){
+            case '1':
+                console.log("case 1 is executing\n");
+                user_string = prompt("Enter the value of the string");
+                result_element.innerHTML = "-> you entered : " + user_string;
+                break;
+            case '2':
+                console.log("user_string.toLower() = " + user_string.toLowerCase() + "\n");
+                console.log("typeof user_string = " + typeof user_string + "\n");
+                user_string = user_string.toLowerCase();
+                result_element.innerHTML = user_string;
+                break;
+            case '3':
+                console.log("typeof user_string = " + typeof user_string + "\n");
+                user_string = user_string.toUpperCase();
+                result_element.innerHTML = user_string;
+            default:
+                console.log("Check what happened during the choice of option\n");
+        }
+    }
+
+</script>
+
+</html>
