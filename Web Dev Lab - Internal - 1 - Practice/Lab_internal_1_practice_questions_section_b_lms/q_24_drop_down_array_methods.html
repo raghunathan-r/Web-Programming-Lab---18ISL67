@@ -12,5 +12,112 @@
         Q24. Create a HTML page with a drop down containing 8 Array methods and select of any method perform suitable operations and display result on HTML page
     </h2>
 
+    <label for="select_box_array_methods">available array methods</label>
+    <select name="select_box_array_methods" id="select_box_id" onchange="selectBoxArrayMethods()">
+        <option value="0">choose</option>
+        <option value="1">enter an array</option>
+        <option value="2">print length</option>
+        <option value="3">delete first element</option>
+        <option value="4">delete last element</option>
+        <option value="5">delete element in position</option>
+        <option value="6">insert element at first</option>
+        <option value="7">insert element in end</option>
+        <option value="8">insert element in position</option>
+        <option value="9">print array</option>
+
+
+    </select>
+
+    <h3>RESULT : <span id="result_id">...</span></h3>
+
 </body>
+
+<script>
+
+    var user_array = new Array();
+
+
+    function selectBoxArrayMethods(){
+
+        console.log("function is called");
+
+        select_box = document.getElementById("select_box_id");
+        choice = select_box.options[select_box.selectedIndex].value;
+
+        result_element = document.getElementById("result_id");
+
+        console.log("option selected : " + choice + "\n");
+
+        console.log("type of user_array : " + typeof user_array + "\n");
+        console.log("user_array : " + user_array + "\n");
+
+
+        switch(choice){
+            case '1':{
+                user_array = prompt("Enter the elements of the array : ").split(" ");
+
+                console.log("type of user_array : " + typeof user_array + "\n");
+                console.log("user_array : " + user_array + "\n");
+
+                result_element.innerHTML = "entered array is " + user_array;
+
+                break;
+            }
+            case '2':{
+                result_element.innerHTML = "length of array is " + user_array.length;
+
+                break;
+            }
+            case '3':{
+
+                result_element.innerHTML = "deleted array element is " + user_array.shift();
+                
+                break;
+            }
+            case '4':{
+                
+                result_element.innerHTML = "deleted array element is " + user_array.pop();
+
+                break;
+            }
+            case '5':{
+
+                delete_index = parseInt(prompt("Enter the index to delete : "));
+                result_element.innerHTML = "deleted element is " + user_array[delete_index];
+                user_array = user_array.slice(0, delete_index).concat(user_array.slice(delete_index + 1));
+                
+                break;
+            }
+            case '6':{
+                
+                user_array.splice(0, 0, prompt("Enter the element to add at first : "));
+                result_element.innerHTML = "added element is " + user_array[0];
+
+                break;
+            }
+            case '7':{
+                
+                user_array.splice(user_array.length, 0, prompt("Enter the element to add at first : "));
+                result_element.innerHTML = "added element is " + user_array[user_array.length - 1];
+
+                break;
+            }
+            case '8':{
+
+                user_array.splice(prompt("Enter the position to add : "), 0, prompt("Enter the element to add :"));
+                result_element.innerHTML = "added element is " + user_array[user_array.length - 1];
+
+                break;
+            }
+            case '9':{
+
+                result_element.innerHTML = "elements in array : " + user_array;
+
+                break;
+            }
+        }
+    }
+
+</script>
+
 </html>

@@ -63,6 +63,42 @@
 
     <a href="#" onclick="question12stringsDriverFunction()"; return false;>Q12. String function</a>
 
+    <br>
+
+    <a href="#" onclick="question13driverFunction()"; return false;>Q13. Write a java script code to multiply each number in the array by 10 and return the result using the map()function with arrow notation.</a>
+
+    <br>
+
+    <a href="#" onclick="listPropertiesOfObject()"; return false;>Q14. Write a java script program to list the properties of a java script object.</a>
+
+    <br>
+
+    <h2>Part - B - Application based</h2>
+
+    <br>
+
+    <a href="#" onclick="mapsVsObjects()"; return false;>Q1. Show how map is different from object to store key value pairs with coding example and prove maps perform better than objects in most of the scenarios involving addition and removal of keys.</a>
+
+    <br>
+
+    <a href="#" onclick="setsVsArrays()"; return false;>Q2. Sets vs Arrays</a>
+
+    <br>
+
+    <a href="#" onclick="promisesArithmeticOperationsSynchronously()"; return false;>Q3. Arithmetic promise synchronously</a>
+
+    <br>
+
+    <a href="#" onclick="question4ValidateLocationDriverFunction()"; return false;>Q4. Write a Javascript program where user passes the location and a function is called which returns a promise, if the location passed is Paris Below is the output expected: "Let's take a trip to Paris" If the location is other than Paris, show the error message "Invalid Location"</a>
+
+    <br>
+
+    <a href="#" onclick="question5flightBookingDriverFunction()"; return false;>Q5. Flight booking function</a>
+
+    <br>
+
+    <a href="#" onclick="checkForVirus()"; return false;>Q7. Virus composition substring</a>
+
 </body>
 
 <script>
@@ -617,30 +653,286 @@
         var choice;
 
         do{
-            choice = prompt("Options available are :\n\n\ta) capitalize first letter of each word \nYou choice ? : ");
+            choice = prompt("Options available are :\n\n\ta) capitalize first letter of each word \nb) insert a string within a string in given position \nYou choice ? : ");
+
+            console.log("type of choice = " + typeof choice + "\n");
 
             switch(choice){
-                case "a":{
-                    
-                    array_of_words = user_string.split(" ");
+                case 'a': {
+                    extracted_words = user_string.split(" ");
 
-                    console.log("the array of entered words : " + array_of_words + "\n");
-                    for(i = 0; i < array_of_words.length; i++){
-                        array_of_words[i] = array_of_words[i].charAt(0).toUpperCase() + array_of_words[i].splice(1);
+                    capitalized_words = [];
 
-                        console("array_of_words[i] = i = " + i + " -> " + array_of_words[i].charAt(0).toUpperCase() + "\n");
-                        console("array_of_words[i].charAt(0).toUpperCase() = " + array_of_words[i].charAt(0).toUpperCase() + "\n");
+                    for(i = 0; i < extracted_words.length; i++){
+                        capitalized_word = extracted_words[i].charAt(0).toUpperCase() + extracted_words[i].slice(1);
+
+                        capitalized_words.push(capitalized_word);
                     }
+
+                    user_string = capitalized_words.join(" ");
+
+                    alert("The capitalized words string : \n" + user_string);
+                    break;
+                }
+                case 'b': {
+                    insert_word = prompt("Enter the word or string to be inserted");
+                    index_position = prompt("Enter the index position to insert into : ");
+
+                        // .slice(index, how_many_to_remove, item)
+                    extracted_words.splice(index_position, 0, insert_word);
+
+                    user_string = extracted_words.join(" ");
+
+                    alert("The string after inserting : \n" + user_string);
 
                     break;
                 }
-                default:
-                    alert("Sorry, try again");
             }
-        }while(choice != "e");
+        
+        }while(0);
 
 
     }
+
+    // Q13. Write a java script code to multiply each number in the array by 10 and return the result using the map() function with arrow notation.
+
+    var tensTableMap = (array) => {
+        return array.map(key => key * 10);
+    }
+
+    function question13driverFunction(){
+        integer_array = [0, 1, 2, 3, 4, 5, 6, 7];
+
+        tens_table_map = tensTableMap(integer_array);
+
+        alert("The map made is :\n" + tens_table_map);
+
+        console.log(tens_table_map);
+        console.log("type of " + typeof tens_table_map + "\n");
+    }
+
+    // Q14. Write a java script program to list the properties of a java script object. 
+
+    function listPropertiesOfObject(){
+
+        student_object = new Object();
+
+        student_object = {
+            name: "mohan kumar",
+            dept: "ise",
+            id: 056
+        }
+
+        console.log(student_object);
+        alert(Object.values(student_object));
+
+    }
+
+    // PART - B - APPLICATION BASED
+
+    // Q1. Show how map is different from object to store key value pairs with coding example and prove maps perform better than objects in most of the scenarios involving addition and removal of keys.
+
+    function mapsVsObjects(){
+
+        sample_array = ['raghu', 'nathan', '122'];
+
+        // creating an array and map
+        sample_map = new Map();
+        sample_object = {};
+
+        console.log("The sample array : \n" + sample_array);
+        console.log("The sample map : \n" + sample_map);
+        console.log("The sample object : \n" + sample_object);
+
+        console.log(sample_map);
+        console.log(sample_object);
+
+        // entering the values from the array to map and object
+        for(i = 0; i < sample_array.length; i++){
+            sample_object[i] = sample_array[i];
+            sample_map.set(i, sample_array[i]);
+        }
+
+        // timing the object to check it has the given key
+        console.time('object_consumed_time');
+        console.log(sample_object);
+        console.log("Checking if object has a property : 1");
+        sample_object.hasOwnProperty(1);
+        console.timeEnd('object_consumed_time');
+
+        // timing the map to check it has the given key
+        console.time('map_consumed_time');
+        console.log(sample_map);
+        console.log("Checking if map has a property : 1");
+        sample_map.has(1);
+        console.timeEnd('map_consumed_time');
+
+        alert("Objects are faster than maps. Open console to view more");
+
+    }
+
+    // Q2. Show how set is different from array to store the value with coding example and prove Sets perform better than Arrays in most of the scenarios involving searching values present in it
+
+    function setsVsArrays(){
+
+        var sample_data = ["raghu", "nathan", "122"];
+
+        var sample_set = new Set();
+        var sample_array = [];
+
+        // inserting elements to the array and list
+        for(i = 0; i < sample_data.length; i++){
+            sample_array.push(sample_data[i]);
+            sample_set.add(sample_array[i]);
+        }
+
+        console.log(sample_array);
+        console.log(sample_set);
+
+        // checking time consumes by array to retrieve an element
+        console.time("time_consumed_by_array");
+        console.log("the index of nathan in array : " + sample_array.indexOf("nathan"));
+        console.timeEnd("time_consumed_by_array");
+
+
+        // checking time consumes by set to retrieve an element
+        console.time("time_consumed_by_set");
+        console.log("the index of nathan in array : " + sample_set.has("nathan"));
+        console.timeEnd("time_consumed_by_set");
+
+        alert("Sets are faster than arrays");
+    }
+
+    // Q3. Implement a JavaScript promise to perform arithmetic operations. Display result for each operation synchronously using await () method. (Give delay in each promise object using settimeout() method)
+
+    function promisesArithmeticOperationsSynchronously(){
+
+        const sum = (num1, num2) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Sum is " + (num1 + num2))
+                }, 3000);
+            })
+        }
+
+        const difference = (num1, num2) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Difference is " + (num1 - num2))
+                }, 3000)
+            })
+        }
+
+        let num1 = parseInt(prompt("Enter the first number : "));
+        let num2 = parseInt(prompt("Enter the second number : "));
+
+        sum(num1, num2).then((message) => {
+            console.log(message);
+        })
+
+        difference(num1, num2).then((message) => {
+            console.log(message);
+        })
+    }
+    
+    // Q4. Write a Javascript program where user passes the location and a function is called which returns a promise, if the location passed is Paris Below is the output expected: "Let's take a trip to Paris" If the location is other than Paris, show the error message "Invalid Location"
+
+    const validateLocation = (location) => {
+        return new Promise((resolve, reject) => {
+            if(location.match(/paris/i)){
+                resolve("Lets take a trip to Paris");
+            } else{
+                reject("Invalid location");
+            }
+        })
+
+    }
+
+    function question4ValidateLocationDriverFunction(){
+        var location = prompt("Enter a location : ");
+
+        validateLocation(location).then((message) => {
+            alert(message);
+        }).catch((error) => {
+            alert(error);
+        })
+    }
+
+    // Q5. Write a JavaScript program to book a hotel only after booking a flight. [Hint: To achieve this, the promise returned from the bookHotel function is resolved only after resolving the promise from bookFlight function. If the promise gets rejected from bookflight then it won't execute the second function.]
+
+    const bookFlight = (answer) => {
+        return new Promise((resolve, reject) => {
+            if(answer.match(/yes/i)){
+                resolve("Your flight is booked");
+            } else{
+                reject("Flight not booked");
+            }
+        })
+    }
+
+    const bookHotel = (answer) => {
+        return new Promise((resolve, reject) => {
+            if(answer.match(/yes/i)){
+                resolve("Your hotel is booked too.")
+            } else{
+                reject("Hotel is not booked");
+            }
+        })
+    }
+
+    function question5flightBookingDriverFunction(){
+        console.log("function called");
+
+        var book_flight = prompt("Do you want to book a flight ? [yes|no] :");
+
+        bookFlight(book_flight).then((message) => {
+            alert(message);
+
+            var book_hotel = prompt("Do you want to book a hotel ? [yes | no ] ? :");
+
+            bookHotel(book_hotel).then((message) => {
+                alert(message);
+            }).catch((error) => {
+                alert(error);
+            })
+
+        }).catch((error) => {
+            alert(error);
+        })
+
+    }
+
+    // Q6.
+
+    // Q7.
+
+    function checkForVirus(){
+
+        var virus_composition = prompt("Enter the virus composition : ");
+        var blood_composition = prompt("Enter the blood composition : ");
+
+        var match_count = 0;
+        var i = 0, j = 0;
+
+        while(i < virus_composition.length && j < blood_composition.length){
+            if(virus_composition[i] == blood_composition[j]){
+                i++;
+                j++;
+                match_count++;
+            }
+            else{
+                i++;
+            }
+        }
+
+        if(match_count == blood_composition.length){
+            alert("It is Positive");
+        } else{
+            alert("It is Negative");
+        }
+    }
+
+
 
 </script>
 
