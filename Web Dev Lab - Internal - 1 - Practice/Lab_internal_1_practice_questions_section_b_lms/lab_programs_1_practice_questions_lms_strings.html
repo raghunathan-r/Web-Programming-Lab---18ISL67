@@ -1,0 +1,87 @@
+<!-- LMS Strings Questions - Section - B -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Strings Questions</title>
+</head>
+<body>
+    
+    <h2>LMS Strings Questions</h2>
+
+    <a href="#" onclick="question9DriverFunction()"; return false;>Q9. Write JavaScript code to encrypt the text using Caesar Cipher technique. Display the encrypted text. Prompt the user for input and the shift pattern.</a>
+
+    <br>
+
+    <a href="#" onclick="processName()"; return false;>Q10. Write a JavaScript code to process the name as the sample below. Sample Input: Rama Krishna Narayan | Sample Output: R. K. Narayan</a>
+
+</body>
+
+<script>
+
+    // Q9. Write JavaScript code to encrypt the text using Caesar Cipher technique. Display the encrypted text. Prompt the user for input and the shift pattern.
+
+    function caesarCipher(plain_text, shift_value){
+
+        cipher_text = "";
+
+        alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+        var character_value = 0;
+        for(let index = 0; index < plain_text.length; index++){
+            character_value = plain_text[index].charCodeAt(0) - 'a'.charCodeAt(0);
+
+            // DEBUGGING
+            console.log("For character " + plain_text[index] + "\n");
+            console.log("char_value = " + character_value + "\n");
+            console.log("type of char_value = " + typeof character_value + "\n");
+            console.log("shift_value = " + shift_value + "\n");
+            console.log("type of shift_value = " + typeof shift_value + "\n");
+            console.log("(character_value % 26) + shift_value = " + ((character_value % 26) + shift_value) +"\n");
+            console.log("So the cipher alphabet is " + alphabets.charAt((character_value % 26) + shift_value) + "\n\n");
+
+            cipher_text += alphabets.charAt((character_value % 25) + shift_value);
+        }   
+
+        alert("The cipher text is : " + cipher_text);
+
+    }
+
+    function question9DriverFunction(){
+        var plain_text = prompt("Enter the plain text : ");
+        var shift_value = parseInt(prompt("Enter the shift value : "));
+
+        caesarCipher(plain_text, shift_value);
+    }
+
+    // Q10. Write a JavaScript code to process the name as the sample below. Sample Input: Rama Krishna Narayan | Sample Output: R. K. Narayan
+
+    function processName(){
+
+        var user_name = prompt("Enter the name : ");
+        var array_of_words = user_name.split(" ");
+        var processed_name = "";
+
+        // DEBUGGING
+        console.log("user_name : " + user_name);
+        console.log("array_of_words : " + array_of_words);
+
+        for(i = 0; i < array_of_words.length - 1; i++){
+            console.log("processed name till now : " + processed_name);
+
+            processed_name += array_of_words[i].charAt(0).toUpperCase() + ". ";
+        }
+
+        console.log("array_of_words[array_of_words.length - 1] = " + array_of_words[array_of_words.length - 1]);
+        processed_name += array_of_words[array_of_words.length - 1];
+
+        alert("The processed name is : " + processed_name);
+
+    }
+
+
+</script>
+</html>

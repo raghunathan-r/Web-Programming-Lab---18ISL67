@@ -1,0 +1,67 @@
+<!-- LMS Questions - Regular expressions - Section - B -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Questions - Regular expressions</title>
+</head>
+<body>
+    
+    <h2>Regular expressions - LMS Questions</h2>
+
+    <a href="#" onclick="extractDate()"; return false;>Q18. Write a JavaScript program to search a date within a string.
+        Sample Input: "Albert Einstein was born in Ulm, on 14/03/1879."
+        Sample Output:14/03/1879.
+    </a>
+
+    <br><br>
+
+    <a href="#" onclick="extractDate()"; return false;>
+        Q19. Write a pattern that matches e-mail addresses. Syntax: localpart@domain 
+        Note: The local part (The text before @ symbol) contains the following ASCII characters.
+        Uppercase (A-Z) and lowercase (a-z) English letters.
+        Digits (0-9).
+        Characters ! # $ % & ' * + - / = ? ^ _ ` { | } ~
+        Character . (dot) provided that it is not the first or last character and it will not come one after the other
+    </a>
+
+</body>
+
+<script>
+
+    // Q18. Write a JavaScript program to search a date within a string. Sample Input: "Albert Einstein was born in Ulm, on 14/03/1879." Sample Output:14/03/1879.   
+
+    function extractDate(){
+
+        date_format = /(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}/g;
+
+        var user_input = prompt("Enter a string : ");
+
+        if(user_input.match(date_format)){
+            alert("The date is present !");
+        } else{
+            alert("Sorry, the date is not present");
+        }
+    }
+
+    // Q19. Write a pattern that matches e-mail addresses. Syntax: localpart@domain  Note: The local part (The text before @ symbol) contains the following ASCII characters. Uppercase (A-Z) and lowercase (a-z) English letters. Digits (0-9). Characters ! # $ % & ' * + - / = ? ^ _ ` { | } ~ Character . (dot) provided that it is not the first or last character and it will not come one after the other
+
+    function extractDate(){
+
+        mail_format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        var user_input = prompt("Enter a mail : ");
+
+        if(mail_format.test(user_input)){
+            alert("The mail is present !");
+        } else{
+            alert("Sorry, the mail is not present");
+        }
+    }
+
+</script>
+
+</html>

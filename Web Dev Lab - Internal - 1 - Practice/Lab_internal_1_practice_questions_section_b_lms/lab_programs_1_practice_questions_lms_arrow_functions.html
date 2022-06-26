@@ -1,0 +1,151 @@
+<!-- LMS Questions - Arrow functions - Section - B -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Questions - Arrow functions</title>
+</head>
+<body>
+
+    <h2>Arrow functions - LMS Questions</h2>
+
+    <a href="#" onclick="findAverageArrowFunction()"; return false;>Q14. Write an arrow function that accepts an array of numbers as input and returns the average of those numbers</a>
+
+    <br>
+
+    <a href="#" onclick="sumOfEvenNumbersInArray()"; return false;>Q15. Write an arrow function that accepts an array of numbers as input and returns the sum of the even numbers in the array.</a>
+
+    <br>
+
+    <a href="#" onclick="checkPalindrome()"; return false;>Q16. Write an arrow function, check_palindrome() to check whether the given string is a palindrome or not. The function should return true if it is a palindrome else it should return false. Assume that all the letters in the given string are all of the same case. Example: MAN, civic, WOW etc.</a>
+
+    <br>
+    
+    <a href="#" onclick="matchStringLength()"; return false;>Q17. Write an arrow function that accepts an array of strings as input and prompt the message which shows “Enter the Length of the String:” Output: Function should return the entered length strings.</a>
+    
+</body>
+
+<script>
+
+    // Q14. Write an arrow function that accepts an array of numbers as input and returns the average of those numbers
+
+    const findAverageArrowFunction = () => {
+
+        user_input = prompt("Enter the array : ").split(" ");
+        
+        var array_sum = 0;
+        for(i = 0; i < user_input.length; i ++){
+            array_sum += parseInt(user_input[i]);
+
+            console.log("item : " + user_input[i]);
+            console.log("array_sum till now : " + array_sum);
+            console.log("\n");
+        }
+
+        array_average = array_sum / user_input.length;
+        console.log("The array length is " + user_input.length);
+        console.log("The average is " + array_average);
+
+        alert("The average is " + array_average);
+
+        // DEBUGGING
+
+        console.log("user input : " + user_input);
+        
+        
+    }
+
+    // Q15. Write an arrow function that accepts an array of numbers as input and returns the sum of the even numbers in the array.
+
+    function sumOfEvenNumbersInArray(){
+
+        user_array = prompt("Enter the elements in the array : ").split(" ");
+
+        // string.splice(insert_index, how_many_items_to_delete, items_to_insert)
+
+        var even_sum_total = 0;
+        for(i = 0; i < user_array.length; i++){
+            number = parseInt(user_array[i]);
+
+            if(number % 2 == 0){
+                even_sum_total += number;
+            }
+
+            console.log("number : " + number);
+            console.log("even sum till now : " + even_sum_total);
+            console.log("\n");
+            
+        }
+
+        // DEBUGGING
+        console.log("user_array : " + user_array);
+
+    }
+
+    // Q16. Write an arrow function, check_palindrome() to check whether the given string is a palindrome or not. The function should return true if it is a palindrome else it should return false. Assume that all the letters in the given string are all of the same case. Example: MAN, civic, WOW etc.
+
+    const checkPalindrome = () => {
+
+        var user_input = prompt("Enter the string to check : ");
+
+        var is_palindrome = true;
+
+        for(i = 0; i < (user_input.length - 1) / 2; i++){
+            if(user_input[i] !== user_input[user_input.length - 1 - i]){
+                console.log(user_input[i] + " !== " + user_input[user_input.length - 1 - i]);
+                console.log("user_input[i] !== user_input[user_input.length - i] => " + user_input[i] !== user_input[user_input.length - i])
+
+                is_palindrome = false;
+                break;
+            }
+        }
+
+        if(is_palindrome){
+            alert("Its is a palindrome !");
+        } else{
+            alert("Sorry, It is not a palindrome");
+        }
+
+    }
+
+    // Q17. Write an arrow function that accepts an array of strings as input and prompt the message which shows “Enter the Length of the String:” Output: Function should return the entered length strings.
+
+    const matchStringLength = () => {
+
+        var user_strings_array = [];
+
+        var user_array_length = parseInt(prompt("Enter how many strings do you want to provide : "));
+
+        for(i = 0; i < user_array_length; i++){
+            user_strings_array[i] = prompt("Enter string no . " + i+1 + " :\n");
+
+            console.log("user_strings_array[i]" + i + " : " + user_strings_array[i]);
+            console.log("user_strings_array[i].length" + i + " : " + user_strings_array[i].length);
+        }
+
+        var find_length = parseInt(prompt("Enter the length of the string to find : "));
+        var output_string = "";
+
+        for(i = 0; i < user_array_length; i++){
+
+            if(user_strings_array[i].length == find_length){
+                output_string += user_strings_array[i] + "\n\n";
+                
+            }
+
+            console.log("user_strings_array[i]" + i + " : " + user_strings_array[i]);
+            console.log("matched strings till now\n" + output_string);
+            console.log("\n");
+        }
+
+        alert("The strings that match the length are :\n" + output_string);
+    }
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,168 @@
+<!-- LMS Questions - Promises - Section - B -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Questions - Promises</title>
+</head>
+<body>
+
+    <h2>Promises - LMS Questions</h2>
+
+    <a href="#" onclick="question23ValidateLocationDriverFunction()"; return false;>
+        Q23. Write a Javascript program where user passes the location and a function is called which returns a promise, if the location passed is Paris Below is the output expected: "Let's take a trip to Paris". If the location is other than Paris, show the error message "Invalid Location".
+    </a>
+
+    <br><br>
+
+    <a href="#" onclick="question24flightBookingDriverFunction()"; return false;>
+        Q24. Write a JavaScript program to book a hotel only after booking a flight. [Hint: To achieve this, the promise returned from the bookHotel function is resolved only after resolving the promise from bookFlight function. If the promise gets rejected from bookflight then it won't execute the second function.]
+    </a>
+
+    <br><br>
+
+    <a href="#" onclick="question25DriverFunction()"; return false;>
+        Q25. Write a function numTest that takes a number as an argument and returns a Promise that tests if the value is less than or greater than the value 20.
+    </a>
+
+    <br><br>
+
+    <a href="#" onclick="promisesArithmeticOperationsSynchronously()"; return false;>
+        Q26. Implement a JavaScript promise to perform arithmetic operations. Display result for each operation synchronously using await () method. (Give delay in each promise object using settimeout() method)
+    </a>
+    
+</body>
+
+<script>
+
+    // Q23. Write a Javascript program where user passes the location and a function is called which returns a promise, if the location passed is Paris Below is the output expected: "Let's take a trip to Paris". If the location is other than Paris, show the error message "Invalid Location".
+
+    const validateLocation = (location) => {
+        return new Promise((resolve, reject) => {
+            if(location.match(/paris/i)){
+                resolve("Lets take a trip to Paris");
+            } else{
+                reject("Invalid location");
+            }
+        })
+
+    }
+
+    function question23ValidateLocationDriverFunction(){
+        var location = prompt("Enter a location : ");
+
+        validateLocation(location).then((message) => {
+            alert(message);
+        }).catch((error) => {
+            alert(error);
+        })
+    }
+
+    // Q24. Write a JavaScript program to book a hotel only after booking a flight. [Hint: To achieve this, the promise returned from the bookHotel function is resolved only after resolving the promise from bookFlight function. If the promise gets rejected from bookflight then it won't execute the second function.]
+
+    const bookFlight = (answer) => {
+        return new Promise((resolve, reject) => {
+            if(answer.match(/yes/i)){
+                resolve("Your flight is booked");
+            } else{
+                reject("Flight not booked");
+            }
+        })
+    }
+
+    const bookHotel = (answer) => {
+        return new Promise((resolve, reject) => {
+            if(answer.match(/yes/i)){
+                resolve("Your hotel is booked too.")
+            } else{
+                reject("Hotel is not booked");
+            }
+        })
+    }
+
+    function question24flightBookingDriverFunction(){
+        console.log("function called");
+
+        var book_flight = prompt("Do you want to book a flight ? [yes|no] :");
+
+        bookFlight(book_flight).then((message) => {
+            alert(message);
+
+            var book_hotel = prompt("Do you want to book a hotel ? [yes | no ] ? :");
+
+            bookHotel(book_hotel).then((message) => {
+                alert(message);
+            }).catch((error) => {
+                alert(error);
+            })
+
+        }).catch((error) => {
+            alert(error);
+        })
+
+    }
+
+    // Q25. Write a function numTest that takes a number as an argument and returns a Promise that tests if the value is less than or greater than the value 20.
+
+    function numTest(user_number){
+
+        return new Promise(function(resolve, reject){
+            if(user_number > 20){
+                resolve("Success the number is greater than 20!");
+            } else{
+                resolve("Fails the number is not greater than 20");
+            }
+        })
+    }
+
+    function question25DriverFunction(){
+        let user_number = prompt("Enter a number to check : ");
+
+        numTest(user_number).then((message) => {
+            alert(message);
+        }).catch((error) => {
+            alert(error);
+        })
+    }
+
+    // Q26. Implement a JavaScript promise to perform arithmetic operations. Display result for each operation synchronously using await () method. (Give delay in each promise object using settimeout() method)
+
+    function promisesArithmeticOperationsSynchronously(){
+
+        const sum = (num1, num2) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Sum is " + (num1 + num2))
+                }, 3000);
+            })
+        }
+
+        const difference = (num1, num2) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Difference is " + (num1 - num2))
+                }, 3000)
+            })
+        }
+
+        let num1 = parseInt(prompt("Enter the first number : "));
+        let num2 = parseInt(prompt("Enter the second number : "));
+
+        alert("Look at the console for output")
+
+        sum(num1, num2).then((message) => {
+            console.log(message);
+        })
+
+        difference(num1, num2).then((message) => {
+            console.log(message);
+        })
+    }
+
+
+</script>
+
+</html>

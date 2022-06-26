@@ -1,0 +1,92 @@
+<!-- LMS Questions - Array - Section - B -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Questions - Array - Section - B</title>
+</head>
+<body>
+
+    <h2>Arrays - LMS Questions</h2>
+
+    <a href="#" onclick="splitArrayIntoPartsOfGivenSize()"; return false;>Q11. Write a JavaScript method that splits an array into parts of determined size.</a>
+
+    <br>
+
+    <a href="#" onclick="printLeapYearsInGivenRange()"; return false;>Q12. Write a JavaScript program to find the leap years in a given range of years.</a>
+
+    <br>
+
+    <a href="#"onclick="addElementInPositionInArray()"; return false;>Q13. Write a JavaScript Program to add elements to the existing array at specific positions.</a>
+    
+</body>
+
+<script>
+
+    // Q11. Write a JavaScript method that splits an array into parts of determined size.
+
+    function splitArrayIntoPartsOfGivenSize(){
+
+        var user_input = prompt("Enter the array : ");
+        var split_size = parseInt(prompt("Enter the split size : "));
+        var splitted_array = [];
+
+        // DEBUGGING
+        console.log("user_input : " + user_input);
+        console.log("split_size : " + split_size);
+
+        for(i = 0; i < user_input.length; i += split_size){
+
+            split_part = user_input.slice(i, i + split_size);
+            splitted_array.push(split_part);
+
+            console.log("split_part : " + split_part);
+            console.log("splitted_array array till now : " + splitted_array);
+            console.log("\n");
+        }
+
+        alert("The splitted array is : " + splitted_array);
+    }
+
+    // Q12. Write a JavaScript program to find the leap years in a given range of years.
+
+    function printLeapYearsInGivenRange(){
+
+        var lower_limit = parseInt(prompt("Enter the lower limit of the year : "));
+        var upper_limit = parseInt(prompt("Enter the upper limit of the year : "));
+
+        function isLeapYear(year){
+            return (year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0);
+        }
+
+        var output_string;
+        for(i = lower_limit; i <= upper_limit; i++){
+            if(isLeapYear(i)){
+                output_string += i + " ";
+            }
+        }
+
+        alert("The leap years between the given range are : \n" + output_string);
+
+    }
+
+    // Q13. Write a JavaScript Program to add elements to the existing array at specific positions.
+
+    function addElementInPositionInArray(){
+
+        user_array = prompt("Enter the array : ").split(" ");
+
+        var element = prompt("Enter the element to add : ");
+        var position = parseInt(prompt("Enter the position to add in : "));
+
+        user_array.splice(position, 0, element);
+
+        alert("The array after the update is : \n" + user_array);
+    }
+
+</script>
+
+</html>
