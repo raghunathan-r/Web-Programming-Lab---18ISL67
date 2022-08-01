@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part - A - Lab Externals</title>
+</head>
+<body>
+
+    <h2>Part - A</h2>
+
+    <br>
+    
+    <a href="#" onclick=countVowels(); return false>Q1.a. Write a JavaScript function that accepts a string as a parameter and counts the number of vowels within the string. </a>
+
+    <br><br>
+
+    <a href="#" onclick=countWords(); return false>Q1.b. Write a JavaScript program to count the number of words in a string.</a>
+
+    <br><br>
+
+    <a href="#" onclick=countEachCharacter(); return false>Q2. a. Write a JavaScript function to get the number of occurrences of each letter in a specified string.</a>
+
+    <br><br>
+
+    <a href="#" onclick=findLongestWord(); return false>Q2. b. Write a JavaScript function that accepts a string as a parameter and find the longest word within the string</a>
+
+    <br><br>
+
+    <a href="#" onclick=question3DriverFunction(); return false>Q3. Write a JavaScript code to handle multiple callback functions using JavaScript promises (use promise object then (onfulfilled,onrejected)).</a>
+
+    <br><br>
+
+    <a href="#" onclick=storeRetrieveValuesInSet(); return false;>Q4. a. Write a JavaScript program to store values into a set, and to retrieve value from the set, to iterate over the set.</a>
+
+    <br><br>
+
+    <a href="#" onclick=storeRetrieveValuesInMap(); return false;>Q4. b. Write a JavaScript program to store values into a map, and to retrieve value from the map using key, to iterate over the map.</a>
+
+    <br><br>
+
+    <a href="#">[ NOT WORKING ] Q5. a. Write a JavaScript code that returns a passed string with letters in alphabetical order. Use addEventListener() method.</a>
+
+    <p>Enter string : </p> <input id="input_text_q5a" type="text">
+    <button id="sort_button_q5a">SORT</button>
+
+    <br><br>
+
+    <a href="#">[ NOT WORKING ] Q5. b. Write Javascript code using functions to convert the text entered in textbox to lowercase if it's in uppercase and vice versa on a button click.</a>
+
+    <br><br>
+
+    <a href="#" onclick=reverseGivenNumberArrowFunction(); return false;>Q6. a. Apply JavaScript Arrow function to reverse a given Number. Given Number = 12243; Expected Output: 34221</a>
+
+    <br><br>
+
+    <a href="#" onclick=calculateFactorial(); return false;>Q6. b. Write Javascript arrow function to find factorial of a number.</a>
+
+    <br><br>
+
+    <a href="#" onclick=question7DriverFunction(); return false;>Q7. Write a JavaScript code to perform Jump Search for a given key and report success or failure. Prompt the user to enter the key and a list of numbers.</a>
+
+    <br><br>
+
+</body>
+
+<script>
+
+    // Q1.a. Write a JavaScript function that accepts a string as a parameter and counts the number of vowels within the string.
+    function countVowels(){
+
+        var vowels = "aeiouAEIOU".split('');
+        var vowels_count = 0;
+        
+        var user_string = prompt("enter a string [ eg. hello there ]: ");
+        var user_characters = user_string.split('');
+
+        // DEBUGGING
+        console.log("the characters after splitting are : " +  user_characters + "\n");
+
+        for(let index = 0; index < user_characters.length; index++){
+            if(vowels.includes(user_characters[index])){
+                vowels_count++;
+            }
+        }
+
+        alert("there are " + vowels_count + " vowels in the string");
+    }
+
+    // Q1.b. Write a JavaScript program to count the number of words in a string.
+    function countWords(){
+
+        var word_count = 0;
+        var user_string = prompt("enter a string [ eg. hello there ] : ");
+        var extracted_words = user_string.split(" ");
+
+        word_count = extracted_words.length;
+
+        alert("there are " + word_count + " words in the string");
+
+    }
+
+    // Q2. a. Write a JavaScript function to get the number of occurrences of each letter in a specified string.
+    function countEachCharacter(){
+
+        var user_string = prompt("enter a string [ eg. hello there ] : ");
+        var char_counts = {};
+
+        for(let i = 0; i < user_string.length; i++){
+            var letter = user_string[i];
+
+            // if the letter doesn't already exist in the char_counts array we must initialize it to 1
+            if(!char_counts[letter]){
+                char_counts[letter] = 1;
+            } else{
+                char_counts[letter]++;
+            }
+        }
+
+        var output_string = "the string contains the following character counts :\n";
+        for(letter in char_counts){
+            output_string += letter + " -> " + char_counts[letter] + "\n";
+        }
+
+        alert(output_string);
+    }
+
+    // Q2. b. Write a JavaScript function that accepts a string as a parameter and find the longest word within the string
+    function findLongestWord(){
+
+        var user_string = prompt("enter a string [ eg. hello there ] : ");
+        var extracted_words = user_string.split(" ");
+
+        var longest_word = extracted_words[0];
+        for(let i = 0; i < extracted_words.length; i++){
+
+            console.log("assumed longest word : " + longest_word);
+
+            for(let j = i + 1; j < extracted_words.length; j++){
+                if(longest_word.length < extracted_words[j].length){
+
+                    console.log("longest word length : " + longest_word.length);
+                    console.log("extracted_words[j] : " + extracted_words[j]);
+                    console.log("extracted_words[j].length " + extracted_words[j].length);
+
+
+                    longest_word = extracted_words[j];
+
+                    
+                }
+            }
+        }
+
+        alert("the longest word is " + longest_word);
+    }
+
+    // Q3. Write a JavaScript code to handle multiple callback functions using JavaScript promises (use promise object.then (onfulfilled,onrejected)).
+    // onfulfilled and onrejected is resolve and reject
+    function sampleCallBackUsingPromise( age ){
+
+        return new Promise((resolve, reject) => {
+
+            if(age >= 18){
+                resolve("you are allowed");
+            } else{
+                reject("you are not allowed");
+            }
+        })
+
+    }
+
+    function question3DriverFunction(){
+
+        var user_age = parseInt(prompt("enter your age : "));
+
+        sampleCallBackUsingPromise(user_age).then(resolve => alert(resolve)).catch(reject => alert(reject));
+
+    }
+
+    // Q4. a. Write a JavaScript program to store values into a set, and to retrieve value from the set, to iterate over the set.
+    function storeRetrieveValuesInSet(){
+
+        var user_input = prompt("enter the elements of the set : ");
+        console.log("storing the elements into the set ...");
+
+        // var user_set = new Set(user_input.split(" "));
+        var user_set = new Set();
+
+        for(let index in user_input.split(" ")){
+            user_set.add(user_input.split(" ")[index]);
+        }
+
+        console.log("elements stored in set : " + user_set);
+
+        var output_string = "the items in the set are :\n";
+
+        user_set.forEach(element => {
+            output_string += element + " ";
+        })
+
+        alert(output_string);
+
+        // this is how it is supposed to be done according to question
+        console.log("user_set.values() " + user_set.values());
+        var set_iterator = user_set.values()
+        for(var element of set_iterator){
+            console.log(element);
+        }
+        
+    }
+
+    // Q4. b. Write a JavaScript program to store values into a map, and to retrieve value from the map using key, to iterate over the map.
+    function storeRetrieveValuesInMap(){
+
+        var user_input = prompt("enter the values to store : ");
+        var user_array = user_input.split(" ");
+        var user_map = new Map();
+
+        for(let i = 0; i < user_array.length; i++){
+            user_map.set(i, user_array[i]);
+        }
+
+        console.log("user map : " + user_map);
+
+        keys = user_map.keys();
+
+        var output_string = " the key value pairs are :\n";
+        for(key of user_map.keys()){
+
+            console.log(key)
+
+            output_string += key + " -> " + user_map.get(key) + "\n";
+        }
+
+        alert(output_string);
+    }
+
+    
+    // Q5. a. Write a JavaScript code that returns a passed string with letters in alphabetical order. Use addEventListener() method.
+    // NOT WORKING
+    sort_button_q5a
+
+    var sort_button_element = document.getElementById("sort_button_q5a");
+    sort_button_element.addEventListener("click", () => {
+
+        var text_field_element = document.getElementById("input_text_q5a");
+        var user_string = text_field_element.values;
+
+        console.log("user_string : " + user_string);
+    })
+
+    // Q5. b. Write Javascript code using functions to convert the text entered in textbox to lowercase if it's in uppercase, and vice versa on a button click. 
+
+
+    // Q6. a. Apply JavaScript Arrow function to reverse a given Number. Given Number = 12243; Expected Output: 34221
+    var reverseGivenNumberArrowFunction = () => {
+
+        var user_input = parseInt(prompt("enter a number [ eg. 12243 ] : "));
+
+        var output_string = "";
+
+        var number = user_input;
+        while(number != 0){
+            let digit = number % 10;
+            output_string = output_string + digit;
+
+            console.log("output_string " + output_string);
+
+            number = parseInt(number/10);
+        }
+
+        alert("the reversed number is : " + output_string);
+
+        
+    }
+
+    // Q6. b. Write Javascript arrow function to find factorial of a number.
+    var calculateFactorial = () => {
+        var user_input = parseInt(prompt("enter a number [ eg. 3 ] : "));
+
+        var factorial = 1;
+
+        for(let number = user_input; number > 0; number--){
+            factorial *= number;
+        }
+
+        alert("the factorial of " + user_input + " is " + factorial);
+    }
+
+    // Q7. Write a JavaScript code to perform Jump Search for a given key and report success or failure. Prompt the user to enter the key and a list of numbers.
+
+    /*
+        the time complexity of jump search is O(sqrt n)
+
+        index : 0 1 2 3 4 5 6 7 8 9  10 11
+        array : 1 2 3 4 5 6 7 9 9 10 11 12
+
+        Lets take a block size of    m = 3 (this is called the jump size)
+        The total number of elements n = 12
+
+        The array must be sorted
+
+        So the algorithm will jump like this
+        array : 1 2 3 4 5 6 7 9 9 10 11 12
+                |     |     |     | 
+                      |     |     |
+                            |     |
+                                  |
+
+        There will be two pointers 
+            low  = at lower index
+            high = at higher index
+        
+        We keep a count of number of jumps
+            jump = 
+
+        Finally after all the jumps when we exceed the boundary of the array we perform a liner search
+    */
+
+    function jumpSearch(array, key){
+
+        var array_of_elements = new Array();
+        for(element in array){
+            console.log("the type of element in array is -> " + typeof element + "\n");
+            console.log("the element in array is -> " + element + "\n");
+        }
+
+        let index_position = -1;
+
+        // the optimum block size for jumping 
+        let block_size = Math.sqrt(array.length);
+
+        // DEBUGGING
+        console.log("The sorted array is : " + array + "\n");
+        console.log("The array length is : " + array.length + "\n");
+        console.log("The block size is : " + block_size + "\n");
+
+
+        // now jumping till we find the block in which the element is present
+        var high_pointer = Math.sqrt(array.length);
+
+        var low_pointer = 0;
+
+        // we keep jumping till the last element in the block is greater than or equal to the element to be found
+        while(array[ Math.min(high_pointer, array.length) ] < key){
+
+            low_pointer = high_pointer;
+            high_pointer += block_size;
+
+            // if the lower pointer exceeds the array size that means the key is not there
+            if(low_pointer >= array.length){
+                return -1;
+            }
+
+        }
+
+        // now that we have the block in which teh element will be present we will perform a linear search
+        // console.log("The block in which the element might be present is : " + array.splice(low_pointer, high_pointer) + "\n");
+
+        for(low_pointer = low_pointer; low_pointer <= Math.min(high_pointer, array.length); low_pointer++){
+
+            if(array[low_pointer] == key){
+                return low_pointer;
+            }
+
+        }
+
+        return index_position;
+    }
+
+    function question7DriverFunction(){
+
+        user_array = prompt("Enter the elements in the array : ");
+        user_array = user_array.split(" ");
+
+        console.log("The entered array is : " + user_array + "\n");
+
+        element_to_find = prompt("Enter the element to find : ");
+
+        index_found_in = jumpSearch(user_array, element_to_find);
+
+        if(index_found_in != -1){
+            alert("Element found in index : " + index_found_in);
+        } else{
+            alert("Sorry, element not found");
+        }
+
+    }
+
+
+</script>
+
+</html>
