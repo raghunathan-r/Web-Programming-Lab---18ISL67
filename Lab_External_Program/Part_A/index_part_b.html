@@ -342,21 +342,19 @@
     }
 
     // Q10. Write a JavaScript program to count the number of visitors to keep track of how often a website is accessed and display the number of visitors at the bottom of the homepage.
-    function countVisitors(){
+    var count_element = document.getElementById("visitor_count_element_id");
 
-        var count_element = document.getElementById("visitor_count_element_id");
-
-        var visitCount = localStorage.getItem("page_view");
-        if (visitCount) {
-            visitCount = Number(visitCount) + 1;
-            localStorage.setItem("page_view", visitCount);
-        } 
-        else {
-            visitCount = 1;
-            localStorage.setItem("page_view", 1);
-        }
-        count_element.innerHTML = visitCount;
+    var visitCount = localStorage.getItem("page_view");
+    if (visitCount) {
+        visitCount = Number(visitCount) + 1;
+        localStorage.setItem("page_view", visitCount);
+    } 
+    else {
+        visitCount = 1;
+        localStorage.setItem("page_view", 1);
     }
+    count_element.innerHTML = visitCount;
+
 
 </script>
 
