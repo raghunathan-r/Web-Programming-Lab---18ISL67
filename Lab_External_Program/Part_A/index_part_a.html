@@ -63,6 +63,37 @@
 
     <br><br>
 
+    <a href="#" onclick=caesarCipher(); return false;>Q8. Write JavaScript code to encrypt the text using Caesar Cipher technique. Display the encrypted text. Prompt the user for input and the shift pattern.</a>
+
+    <br><br>
+
+    <a href="#" onclick=capitalizeEachWordFirstLetter(); return false;>Q9. a. Write a JavaScript function To capitalize the first letter of each word in a string.</a>
+
+    <br><br>
+
+    <a href="#" onclick=convertStringToWords(); return false;>Q9. b. Write a JavaScript function To split a string and convert it into an array of words.</a>
+
+    <br><br>
+
+    <a href="#" onclick=listPropertiesOfObject(); return false;>
+        Q10. a. Write a JavaScript program to list the properties of a JavaScript object.
+        Sample object:
+        var student = {
+        name : "C V Raman",
+        Dept : "ISE",
+        id : 058 };
+        Sample Output: C V Raman ISE, 056 
+    </a>
+
+    <br><br>
+
+    <a href="#" onclick=reverseEachWord(); return false;>Q10. b. Write javascript code given a string, to reverse each word in the sentence. (Ex: Welcome to this Javascript Guide! should become emocleW ot siht tpircsavaJ !ediuG)</a>
+
+    <br><br>
+
+
+    <a href="./temp.html">Temp File</a>
+
 </body>
 
 <script>
@@ -388,6 +419,99 @@
 
     }
 
+    // Q8. Write JavaScript code to encrypt the text using Caesar Cipher technique. Display the encrypted text. Prompt the user for input and the shift pattern.
+
+    function caesarCipher(){
+
+        var plain_text = prompt("enter the plain text : ");
+        var shift_value = parseInt(prompt("enter the shift value : "));
+
+        var alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+        var cipher_text = "";
+        for(let i = 0; i < plain_text.length; i++){
+
+            var char = plain_text[i];
+            var char_value = char.charCodeAt(0) - 'a'.charCodeAt(0);
+
+            console.log("char code of " + char + " : " + char_value);
+
+            cipher_text += alphabets.charAt((char_value % 25) + shift_value);
+            
+            console.log("cipher text till now : " + cipher_text);
+        }
+
+        alert("the cipher text is : " + cipher_text);
+    }
+
+    // Q9. a. Write a JavaScript function To capitalize the first letter of each word in a string.
+    function capitalizeEachWordFirstLetter(){
+
+        var user_input = prompt("enter a string : ");
+        var extracted_words = user_input.split(" ");
+
+        for(let i = 0; i < extracted_words.length; i++){
+            extracted_words[i] = extracted_words[i].charAt(0).toUpperCase() + extracted_words[i].slice(1);
+        }
+
+        var output_string = extracted_words.join(" ");
+        alert("the result : " + output_string);
+    }
+
+    // Q9. b. Write a JavaScript function To split a string and convert it into an array of words.
+
+    function convertStringToWords(){
+
+        var user_input = prompt("enter a string : ");
+        var extracted_words = user_input.split(" ");
+
+        alert("the array of words are : " + extracted_words);
+    }
+
+    /*
+    Q10. a. Write a JavaScript program to list the properties of a JavaScript object.
+        Sample object:
+        var student = {
+        name : "C V Raman",
+        Dept : "ISE",
+        id : 058 };
+        Sample Output: C V Raman ISE, 056 
+    */
+
+    function listPropertiesOfObject(){
+
+        var user_input = prompt("enter the details of the student object [ name dept id ] ").split(" ");
+
+        var student = new Object();
+        student.name = user_input[0];
+        student.dept = user_input[1];
+        student.id = user_input[2];
+
+        // var output_string = JSON.stringify(student);
+
+        var object_values = Object.values(student);
+
+        alert("the details in object are :\n" + object_values.join(", "));
+    }
+
+    // Q10. b. Write javascript code given a string, to reverse each word in the sentence.(Ex: Welcome to this Javascript Guide! should become emocleW ot siht tpircsavaJ !ediuG)
+    function reverseEachWord(){
+
+        var user_string = prompt("enter a string : ");
+        var extracted_words = user_string.split(" ");
+
+        for(let i = 0; i < extracted_words.length; i++){
+            let reversed_word = "";
+            for(let j = extracted_words[i].length - 1; j >= 0; j--){
+                reversed_word += extracted_words[i].charAt(j);
+            }
+            extracted_words[i] = reversed_word;
+        }
+
+        console.log(extracted_words);
+
+        alert("the revrsed words in string :\n" + extracted_words.join(" "));
+    }
 
 </script>
 

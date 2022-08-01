@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temp File</title>
+</head>
+<body>
+
+    <a href="#" onclick=question7DriverFunction(); return false;>Q7. Jump search</a>
+
+    <br><br>
+
+    <a href="#" onclick=caesarCipher(); return false;>Q8. Caesar cipher</a>
+
+    <br><br>
+    
+</body>
+
+<script>
+    
+    function question7DriverFunction(){
+
+        var user_array = prompt("enter the elements in array").split(" ");
+        console.log("user_array " + user_array);
+        
+        var key = prompt("enter the element to find : ");
+
+        var index_of_key = jumpSearch(user_array, key);
+
+        if(index_of_key == -1){
+            alert("element not found");
+        }else{
+            alert("element found in index " + index_of_key);
+        }
+    }
+
+    function jumpSearch(user_array, key){
+
+        var array = new Array();
+        user_array.forEach(element => {
+            array.push(parseInt(element));
+        });
+        array = array.sort();
+        key = parseInt(key);
+
+        console.log("entered array is " + array);
+
+        index_position = -1;
+        block_size = Math.sqrt(array.length);
+
+        low_pointer = 0;
+        high_pointer = block_size;
+
+        // we keep jumping till the element is found
+        while(array[Math.min(high_pointer, array.length)] < key){
+
+            low_pointer = high_pointer;
+            high_pointer = high_pointer + block_size;
+
+            if(low_pointer >= array.length){
+                return -1;
+            }
+        }
+
+        // now we have to linear search in the block containing the key
+        for(let i = low_pointer; i < Math.min(high_pointer, array.length); i++){
+            if(array[i] == key){
+                index_position = i;
+            }
+        }
+
+        return index_position;
+    }
+
+    function caesarCipher(){
+
+        var plain_text = prompt("enter the plain text : ");
+        var shift_value = parseInt(prompt("enter the shift value : "));
+
+        var alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+        var cipher_text = "";
+        for(let i = 0; i < plain_text.length; i++){
+
+            var char = plain_text[i];
+            var char_value = char.charCodeAt(0) - 'a'.charCodeAt(0);
+
+            console.log("char code of " + char + " : " + char_value);
+
+            cipher_text += alphabets.charAt((char_value % 25) + shift_value);
+            
+            console.log("cipher text till now : " + cipher_text);
+        }
+
+        alert("the cipher text is : " + cipher_text);
+    }
+
+</script>
+    
+</html>
