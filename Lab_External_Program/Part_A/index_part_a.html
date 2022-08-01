@@ -40,14 +40,17 @@
 
     <br><br>
 
-    <a href="#">[ NOT WORKING ] Q5. a. Write a JavaScript code that returns a passed string with letters in alphabetical order. Use addEventListener() method.</a>
+    <a href="#">Q5. a. Write a JavaScript code that returns a passed string with letters in alphabetical order. Use addEventListener() method.</a>
 
     <p>Enter string : </p> <input id="input_text_q5a" type="text">
     <button id="sort_button_q5a">SORT</button>
 
     <br><br>
 
-    <a href="#">[ NOT WORKING ] Q5. b. Write Javascript code using functions to convert the text entered in textbox to lowercase if it's in uppercase and vice versa on a button click.</a>
+    <a href="#">Q5. b. Write Javascript code using functions to convert the text entered in textbox to lowercase if it's in uppercase and vice versa on a button click.</a>
+
+    <p>Enter string : </p> <input id="q5b_text_id" type="text">
+    <button id="q5b_button_id">CONVERT</button>
 
     <br><br>
 
@@ -94,6 +97,7 @@
 
     <a href="./temp.html">Temp File</a>
 
+    <h2><a href="./index_part_b.html">PART - B</a></h2>
 </body>
 
 <script>
@@ -269,19 +273,39 @@
 
     
     // Q5. a. Write a JavaScript code that returns a passed string with letters in alphabetical order. Use addEventListener() method.
-    // NOT WORKING
-    sort_button_q5a
 
     var sort_button_element = document.getElementById("sort_button_q5a");
     sort_button_element.addEventListener("click", () => {
 
         var text_field_element = document.getElementById("input_text_q5a");
-        var user_string = text_field_element.values;
+        var user_string = text_field_element.value;
 
         console.log("user_string : " + user_string);
+
+        alert(user_string.split("").sort().join(""));
     })
 
     // Q5. b. Write Javascript code using functions to convert the text entered in textbox to lowercase if it's in uppercase, and vice versa on a button click. 
+
+    var button_element = document.getElementById("q5b_button_id");
+    button_element.addEventListener("click", () => {
+
+        var text_element = document.getElementById("q5b_text_id");
+        var user_string = text_element.value;
+
+        console.log("user_string " + user_string);
+        console.log("type of user_string " + typeof user_string);
+
+        var extracted_words = user_string.split("");
+        for(var i = 0; i < extracted_words.length; i++){
+            if(extracted_words[i] === extracted_words[i].toLowerCase())
+                extracted_words[i] = extracted_words[i].toUpperCase();
+            else
+                extracted_words[i] = extracted_words[i].toLowerCase();
+        }
+
+        alert(extracted_words.join(" "));
+    })
 
 
     // Q6. a. Apply JavaScript Arrow function to reverse a given Number. Given Number = 12243; Expected Output: 34221

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part - B - External</title>
+</head>
+<body>
+
+    <h2>Part - B</h2>
+
+    <br><br>
+
+    <a href="#" onclick=mapVsObject(); return false;>Q1. Show how map is different from object to store key value pairs with coding examples and prove Maps perform better than objects in most of the scenarios involving addition and removal of keys.</a>
+
+    <br><br>
+
+    <a href="#" onclick=setVsArray(); return false;>Q2. Show how a set is different from an array to store the value with a coding example and prove Sets perform better than Arrays in most of the scenarios involving searching values present in it.</a>
+
+    <br><br>
+
+    <a href="#">Q3. Write a Javascript program to Implement arithmetic operations using Javascript promise and DOM APIs. Display result for each operation synchronously using await () method. (Give delay in each promise object using settimeout() method).</a>
+
+    <br>
+    <p>Enter num 1 </p><input type="text" name="num 1" id="text_field_element_num1_q3">
+    <p>Enter num 2 </p><input type="text" name="num 2" id="text_field_element_num2_q3">
+    <br><br>
+    <button onclick=arithmeticOperationsPromises(); return false;>PERFORM</button>
+
+    <br><br>
+
+    <a href="#" onclick=validateLocationQ4DriveFunction(); return false;>
+    Q4. Write a Javascript program where user passes the location and a function is called which returns a promise, if the location passed is Paris Below is the output expected:
+        "Let's take a trip to Paris"
+        If the location is other than Paris, show the error message "Invalid Location"
+    </a>
+
+    <br><br>
+
+    <a href="#" onclick=question5DriverFunction(); return false;>
+    Q5. Write a JavaScript program to book a hotel only after booking a flight.
+    [Hint: To achieve this, the promise returned from the bookHotel function is resolved only after resolving the promise from bookFlight function.
+    If the promise gets rejected from bookflight then it won't execute the second function.]
+    </a>
+
+    <br><br>
+
+    <a href="#" onclick=question6DriverFunction(); return false;>
+    Q6. Write an arrow function that will take one parameter weight in Kg. This arrow function will convert Kg to Lbs. Formula is kg*2.2
+    ● If LBS is > 150, then the function should return "obese"
+    ● If LBS is between 100 to 150, the function should return "you are ok"
+    ● If LBS is < 100, then the function should return "underweight" 
+    </a>
+
+    <br><br>
+
+    <a href="#" onclick=checkForVirus(); return false;>
+    Q7. In the Martian land faraway, a new virus has evolved and is attacking the individuals at a fast pace. The scientists have figured out the virus composition, V. The big task is to identify the people who are infected. The sample of N people is taken to check if they are POSITIVE or NEGATIVE. A report is generated which provides the current blood composition B of the person.POSITIVE or NEGATIVE? If the blood composition of the person is a subsequence of the virus composition V, then the person is identified as POSITIVE otherwise NEGATIVE.
+    </a>
+
+    <br><br>
+
+    <a href="#" onclick=validateEmail(); return false;>
+    Q8. Write a Javascript code to validate the email id using regular expressions. email is a string consisting of 3 parts: username, @ symbol and domain. The first part of an email address is the username. @ Symbol fits in between the username and the domain of your email address. The domain consists of two parts: the mail server and the top-level domain. The mail server is the server hosting the email account ("Gmail"). The top-level domain is the extension, such as .com, .net or .info.
+    </a>
+
+    <br><br>
+
+    <a href="#">
+    [NOT WORKING] Q9.
+    </a>
+
+    <br><br>
+
+    <a href="#" onclick=countVisitors(); return false;>[NOT WORKING] Q10. Write a JavaScript program to count the number of visitors to keep track of how often a website is accessed and display the number of visitors at the bottom of the homepage.</a>
+
+    <p>VISITOR COUNT : <span id="visitor_count_element_id">0</span></p>
+
+</body>
+
+<script>
+
+    // Q1. Show how map is different from object to store key value pairs with coding examples and prove Maps perform better than objects in most of the scenarios involving addition and removal of keys.
+    function mapVsObject(){
+
+        // finding time for adding and deleting in map
+
+        console.log("creating a sample map...")
+        var sample_map = new Map();
+        console.log("adding name dept and usn to map ...");
+
+        console.time("map_adding_time");
+        sample_map.set("name", "raghu");
+        sample_map.set("dept", "ise");
+        sample_map.set("usn", 122);
+        console.timeEnd("map_adding_time")
+
+        console.log("deleting usn from map ...")
+        console.time("map_deleting_time");
+        sample_map.delete("usn");
+        console.log("deleted usn from the map");
+        console.timeEnd("map_deleting_time");
+
+        console.log("\n")
+
+        // finding time for adding and deleting in objects
+
+        console.log("creating a sample object...")
+        var sample_obj = new Object();
+
+        console.log("adding name dept and usn to object ...");
+        console.time("object_adding_time");
+        sample_obj.name = "raghu";
+        sample_obj.dept = "ise";
+        sample_obj.usn = 122;
+        console.timeEnd("object_adding_time");
+
+        console.time("object_delete_time");
+        console.log("deleting usn from object ...")
+        delete sample_obj.usn;
+        console.log("deleted usn from object")
+        console.timeEnd("object_delete_time");
+
+        console.log("\n\nmaps are more efficient");
+    }
+
+    // Q2. Show how a set is different from an array to store the value with a coding example and prove Sets perform better than Arrays in most of the scenarios involving searching values present in it.
+
+    function setVsArray(){
+
+        var user_input = "1 2 3 4 5 6";
+
+        // storing and searching values in sets
+        console.log("adding items to set ...")
+        console.time("set_adding_time");
+        var sample_set = new Set(user_input.split(" "));
+        console.log("the sample set is : " + sample_set);
+        console.timeEnd("set_adding_time");
+
+        console.log("finding for 4 in the set ...");
+        console.time("set_searching_time");
+        if(sample_set.has("4")){
+            console.log("4 is present in set");
+        } else{
+            console.log("4 is not present in set");
+        }
+        console.timeEnd("set_searching_time");
+
+        console.log("\n\n");
+
+        // storing and searching values in arrays
+        console.log("adding items to array ...")
+        console.time("array_adding_time");
+        var sample_array = new Array(user_input.split(" "));
+        console.log("the sample array is : " + sample_array);
+        console.timeEnd("array_adding_time");
+
+        console.log("finding for 4 in the set ...");
+        console.time("array_searching_time");
+        if(sample_array.indexOf("4") != -1){
+            console.log("4 is present in set");
+        } else{
+            console.log("4 is not present in set");
+        }
+        console.timeEnd("array_searching_time");
+
+
+        console.log("\n\nhence sets perform better")
+
+    }
+
+    // Q3. Write a Javascript program to Implement arithmetic operations using Javascript promise and DOM APIs. Display result for each operation synchronously using await () method. (Give delay in each promise object using settimeout() method).
+
+    function arithmeticOperationsPromises(){
+
+        var num1 = document.getElementById("text_field_element_num1_q3").value;
+        var num2 = document.getElementById("text_field_element_num2_q3").value;
+
+        num1 = parseInt(num1); num2 = parseInt(num2);
+
+        function addition(num1, num2){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("the sum is " + (num1 + num2));
+                }, 3000)
+            });
+        }
+
+        function subtraction(num1, num2){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("the difference is " + (num1 - num2));
+                }, 3000)
+            })
+        }
+
+        addition(num1, num2).then(result => console.log("sum = " + result));
+        subtraction(num1, num2).then(result => console.log("difference = " + result));
+    }
+
+    /*
+    Q4. Write a Javascript program where user passes the location and a function is called which returns a promise, if the location passed is Paris Below is the output expected: 
+    "Let's take a trip to Paris"
+    If the location is other than Paris, show the error message "Invalid Location"
+    */
+    function validateLocationPromise(location){
+        return new Promise((resolve, reject) => {
+            if(location.toLowerCase() === "paris"){
+                resolve("lets take a trip to paris");
+            } else{
+                reject("invalid location");
+            }
+        })
+    }
+
+    function validateLocationQ4DriveFunction(){
+
+        var user_location = prompt("enter the location [ eg. paris ] : ");
+
+        validateLocationPromise(user_location).then(message => alert(message)).catch(message => alert(message));
+    }
+
+    /*
+    Q5. Write a JavaScript program to book a hotel only after booking a flight.
+    [Hint: To achieve this, the promise returned from the bookHotel function is resolved only after resolving the promise from bookFlight function. If the promise gets rejected from bookflight then it won't execute the second function.]
+    */
+    function bookFlight(response){
+        return new Promise((resolve, reject) => {
+            if(response.toLowerCase() === "yes"){
+                resolve("flight booked");
+            } else{
+                reject("flight not booked");
+            }
+        });
+    }
+
+    function bookHotel(response){
+        return new Promise((resolve, reject) => {
+            if(response.toLowerCase() === "yes"){
+                resolve("hotel booked");
+            } else{
+                reject("hotel not booked");
+            }
+        });
+    }
+
+    function question5DriverFunction(){
+
+        var response = prompt("book flight ? [yes|no] ");
+
+        bookFlight(response).then(message => {
+            alert(message);
+
+            response = prompt("book hotel ? [yes|no]");
+            bookHotel(response).then(message => alert(message)).catch(error => alert(error));
+
+        }).catch(error => alert(error));
+    }
+
+    /*
+    Write an arrow function that will take one parameter weight in Kg. This arrow function will convert Kg to Lbs. Formula is kg*2.2
+    ● If LBS is > 150, then the function should return "obese"
+    ● If LBS is between 100 to 150, the function should return "you are ok"
+    ● If LBS is < 100, then the function should return "underweight" 
+    */
+    const convertWeight = (weight) => {
+        console.log(weight);
+
+        weight_lbs = weight * 2.2;
+
+        console.log(weight_lbs);
+
+        if(weight_lbs < 100){
+            return "underweight";
+        } else if(weight_lbs >= 100 && weight <= 150){
+            return "you are ok";
+        }else{
+            return("obese");
+        }
+    }
+
+    function question6DriverFunction(){
+        
+        var weight_in_kg = parseInt(prompt("enter weight in kg : "));
+
+        alert(convertWeight(weight_in_kg));
+    }
+
+    // Q7. In the Martian land faraway, a new virus has evolved and is attacking the individuals at a fast pace. The scientists have figured out the virus composition, V. The big task is to identify the people who are infected. The sample of N people is taken to check if they are POSITIVE or NEGATIVE. A report is generated which provides the current blood composition B of the person.POSITIVE or NEGATIVE? If the blood composition of the person is a subsequence of the virus composition V, then the person is identified as POSITIVE otherwise NEGATIVE.
+    // virus = CORONAVIRUS blood = RONA -> then posetive
+
+    function checkForVirus(){
+        
+        var virus_composition = prompt("enter virus composition : ");
+        var blood_composition = prompt("enter blood composition : ");
+
+        var i = 0, j = 0, match_count = 0;
+
+        while(i < blood_composition.length && j < virus_composition.length){
+            if(blood_composition.charAt(i) === virus_composition.charAt(j)){
+
+                i++; j++;
+                match_count++;
+
+
+                console.log("blood_composition.charAt(i) === virus_composition.charAt(j) " + blood_composition.charAt(i) === virus_composition.charAt(j));
+                console.log("blood_composition.charAt(i) " + blood_composition.charAt(i));
+                console.log("virus_composition.charAt(j) " + virus_composition.charAt(j));
+                console.log("i " + i);
+                console.log("j " + j);
+                console.log("");
+                console.log("match_count " + match_count);
+            }
+            else{
+                j++;
+            }
+        }
+
+        if(match_count == blood_composition.length)
+            alert("positive");
+        else
+            alert("negative");
+    }
+
+    // Q9.
+
+    // Q8. Write a Javascript code to validate the email id using regular expressions. email is a string consisting of 3 parts: username, @ symbol and domain. The first part of an email address is the username. @ Symbol fits in between the username and the domain of your email address. The domain consists of two parts: the mail server and the top-level domain. The mail server is the server hosting the email account ("Gmail"). The top-level domain is the extension, such as .com, .net or .info.
+
+    function validateEmail(){
+
+        var user_mail = prompt("enter the mail : ");
+
+        var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        if(reg.test(user_mail)){
+            alert("email verified");
+            alert(reg.exec(user_mail)[0]);
+        } else{
+            alert("not verified");
+        }
+    }
+
+    // Q10. Write a JavaScript program to count the number of visitors to keep track of how often a website is accessed and display the number of visitors at the bottom of the homepage.
+    function countVisitors(){
+
+        var count_element = document.getElementById("visitor_count_element_id");
+
+        var visitCount = localStorage.getItem("page_view");
+        if (visitCount) {
+            visitCount = Number(visitCount) + 1;
+            localStorage.setItem("page_view", visitCount);
+        } 
+        else {
+            visitCount = 1;
+            localStorage.setItem("page_view", 1);
+        }
+        count_element.innerHTML = visitCount;
+    }
+
+</script>
+
+</html>
